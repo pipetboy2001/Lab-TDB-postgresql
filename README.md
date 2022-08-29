@@ -4,6 +4,7 @@
      
 ## Autores  ✒️
 
+-   **Alen Galindo**  
 -   **Joseph Salas**
 -   **Vicente Vargas**
 -   **Felipe Fernandez**
