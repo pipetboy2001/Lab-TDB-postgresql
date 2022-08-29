@@ -1,5 +1,5 @@
 <div align="center">
-      <h1> <img src="https://th.bing.com/th/id/R.70c11b59c144e8d8af1a292274043105?rik=qsIhI%2f3hvZdFJQ&pid=ImgRaw&r=0" width="80px"><br/>Laboratorio TDB 2</h1>
+      <h1> <img src="https://th.bing.com/th/id/R.70c11b59c144e8d8af1a292274043105?rik=qsIhI%2f3hvZdFJQ&pid=ImgRaw&r=0" width="80px"><br/>Laboratorio TDB 1</h1>
      </div>
      
 ## Autores  ✒️
