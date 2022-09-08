@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.List;
+
 @Component
 @Configuration
 @Repository
@@ -37,6 +39,71 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
         System.out.println("Conexion exitosa!... Dato ingresado en la base de datos...");
         return institucion;
+    }
+
+
+
+
+    @Override
+    public Institucion getInstitucionById(Integer id) {
+        System.out.println("Intento getInstitucionById...");
+        final String query = "select * from institucion where id = :id";
+        final Institucion institucion;
+        Connection conn = sql2o.open();
+        try(conn){
+            institucion = conn.createQuery(query)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Institucion.class);
+            return institucion;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        finally {
+            conn.close();
+        }
+    }
+
+
+    @Override
+    public List<Institucion> getAllInstituciones(){
+        final String query = "select * from institucion";
+        final List<Institucion> institucionList;
+        Connection conn = sql2o.open();
+        try(conn){
+            institucionList = conn.createQuery(query).executeAndFetch(Institucion.class);
+            return institucionList;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        finally {
+            conn.close();
+        }
+    }
+
+
+    @Override
+    public Institucion updateInstitucion(Institucion institucion){
+        final String query = "update users set nombre = :nombre, descrip =:descrip  where id = :id";
+        Connection conn = sql2o.open();
+        try(conn){
+            conn.createQuery(query)
+                    .addParameter("id", institucion.getId())
+                    .addParameter("nombre", institucion.getName())
+                    .addParameter("descrip", institucion.getDescription())
+                    .executeUpdate();
+            return institucion;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        finally {
+            conn.close();
+        }
     }
 
 }

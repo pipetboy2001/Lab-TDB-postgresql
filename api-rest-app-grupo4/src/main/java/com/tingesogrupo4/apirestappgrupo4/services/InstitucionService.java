@@ -8,7 +8,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/institucion")
+@RequestMapping(value = "/")
 public class InstitucionService {
 
     private final InstitucionRepository institucionRepository;
@@ -37,10 +37,24 @@ public class InstitucionService {
     }
 */
 
-    @PostMapping("/create")
+    @PostMapping("/instituciones")
     public Institucion createInstitucion(@RequestBody Institucion institucion){
         System.out.println("Intento posting...");
         return institucionRepository.createInstitucion(institucion);
+    }
+    @GetMapping("/instituciones/{id}")
+    public Institucion getInstitucionById(@PathVariable Integer id){
+        return institucionRepository.getInstitucionById(id);
+    }
+
+    @GetMapping("/instituciones")
+    public List<Institucion> getAllInstituciones(){
+        return institucionRepository.getAllInstituciones();
+
+    }
+    @PutMapping("/instituciones")
+    public Institucion updateInstituciones(@RequestBody Institucion institucion){
+        return institucionRepository.updateInstitucion(institucion);
     }
 
 }

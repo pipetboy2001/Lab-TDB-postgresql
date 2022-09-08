@@ -7,24 +7,24 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 public class Institucion {
 
     public Integer id;
-    public String name;
-    public String description;
+    public String nombre;
+    public String descrip;
 
 
-    public Institucion (Integer id, String name, String description){
+    public Institucion (Integer id, String nombre, String descrip){
         this.id= id;
-        this.name = name;
-        this.description = description;
+        this.nombre = nombre;
+        this.descrip = descrip;
     }
 
     public Integer getId(){
         return id;
     }
     public String getName(){
-        return name;
+        return nombre;
     }
     public String getDescription(){
-        return description;
+        return descrip;
     }
 
 }
