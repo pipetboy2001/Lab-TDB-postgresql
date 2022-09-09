@@ -26,8 +26,8 @@ const routes = [
     component: Instituciones
   },
   {
-    path: '/InstitucionesEdit/:id',
-    name: 'InstitucionesEdit',
+    path: '/instituciones-editar/:id',
+    name: 'instituciones-editar',
     component: InstitucionesEdit
   }
 ]
