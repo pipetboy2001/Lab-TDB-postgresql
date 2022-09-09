@@ -17,6 +17,23 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
     @Autowired
     private Sql2o sql2o;
 
+    @Override
+    public int newId() {
+        int id;
+        String sql = "SELECT MAX(id) FROM institucion";
+
+        System.out.println("Intentando obtener el id desde newId()...");
+        try (Connection conn = sql2o.open()) {
+            id = conn.createQuery(sql).executeScalar(Integer.class);
+            return id;
+        }
+        catch(Exception e){
+            System.out.println("ERROR...");
+            System.out.println(e.getMessage());
+            return 0;
+        }
+
+    }
 
     @Override
     public Institucion createInstitucion(Institucion institucion) {
@@ -40,8 +57,6 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         System.out.println("Conexion exitosa!... Dato ingresado en la base de datos...");
         return institucion;
     }
-
-
 
 
     @Override
@@ -87,7 +102,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
 
     @Override
     public Institucion updateInstitucion(Institucion institucion){
-        final String query = "update users set nombre = :nombre, descrip =:descrip  where id = :id";
+        final String query = "update institucion set nombre = :nombre, descrip =:descrip  where id = :id";
         Connection conn = sql2o.open();
         try(conn){
             conn.createQuery(query)
@@ -106,4 +121,42 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
     }
 
+
+    @Override
+    public void deleteInstitucionById(Integer id){
+        System.out.println("Intento eliminar...");
+        final String query = "DELETE FROM institucion WHERE id=:id";
+        Connection conn = sql2o.open();
+        try(conn){
+            conn.createQuery(query)
+                    .addParameter("id", id)
+                    .executeUpdate();
+            System.out.println("Eliminado con exito...");
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Excepcion...");
+        }
+        finally {
+            conn.close();
+        }
+    }
+    @Override
+    public void deleteInstitucion(){
+        System.out.println("Intento eliminar...");
+        final String query = "DELETE FROM institucion";
+        Connection conn = sql2o.open();
+        try(conn){
+            conn.createQuery(query)
+                    .executeUpdate();
+            System.out.println("Eliminado con exito...");
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Excepcion...");
+        }
+        finally {
+            conn.close();
+        }
+    }
 }

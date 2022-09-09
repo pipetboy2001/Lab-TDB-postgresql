@@ -10,5 +10,13 @@ public interface InstitucionRepository {
 
     List<Institucion> getAllInstituciones();
     Institucion updateInstitucion(Institucion institucion);
+    void deleteInstitucionById(Integer id);
+
+    void deleteInstitucion();
+    int newId();
+
+
+
+
 
 }

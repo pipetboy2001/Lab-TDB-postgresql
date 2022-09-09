@@ -16,31 +16,22 @@ public class InstitucionService {
         this.institucionRepository = institucionRepository;
     }
 
-
-    /*
-    @GetMapping("/count")
-    public String countUsers(){
-        int total = userRepository.countUsers();
-        return String.format("Tienes en total %d usuarios",total);
-    }
-
-    @GetMapping("/getall")
-    public List<User> getAllDiploma(){
-        System.out.println("Entro aqui a getAll");
-        return userRepository.getAllUsers();
-
-    }
-
-    @PostMapping("/update")
-    public User updateUser(@RequestBody User user){
-        return userRepository.updateUser(user);
-    }
-*/
-
     @PostMapping("/instituciones")
     public Institucion createInstitucion(@RequestBody Institucion institucion){
         System.out.println("Intento posting...");
         return institucionRepository.createInstitucion(institucion);
+    }
+
+
+    @PostMapping("/instituciones/newidtest")
+    public int newId(){
+
+        System.out.println("Intento newId...");
+        int myId = newId();
+
+        System.out.println("el max id es = "+myId);
+
+        return myId;
     }
     @GetMapping("/instituciones/{id}")
     public Institucion getInstitucionById(@PathVariable Integer id){
@@ -55,6 +46,16 @@ public class InstitucionService {
     @PutMapping("/instituciones")
     public Institucion updateInstituciones(@RequestBody Institucion institucion){
         return institucionRepository.updateInstitucion(institucion);
+    }
+
+    @DeleteMapping("/instituciones/{id}")
+    public void deleteInstitucionById(@PathVariable Integer id){
+         institucionRepository.deleteInstitucionById(id);
+    }
+
+    @DeleteMapping("/instituciones")
+    public void deleteInstituciones(){
+        institucionRepository.deleteInstitucion();
     }
 
 }
