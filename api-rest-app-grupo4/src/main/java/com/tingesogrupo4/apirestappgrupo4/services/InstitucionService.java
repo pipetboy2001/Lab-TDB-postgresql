@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/")
 public class InstitucionService {
-
+    //Se hace uso de REST para la implementacion de las direciones para obtener los servicios.
     private final InstitucionRepository institucionRepository;
     InstitucionService(InstitucionRepository institucionRepository){
         this.institucionRepository = institucionRepository;
@@ -22,17 +22,6 @@ public class InstitucionService {
         return institucionRepository.createInstitucion(institucion);
     }
 
-
-    @PostMapping("/instituciones/newidtest")
-    public int newId(){
-
-        System.out.println("Intento newId...");
-        int myId = newId();
-
-        System.out.println("el max id es = "+myId);
-
-        return myId;
-    }
     @GetMapping("/instituciones/{id}")
     public Institucion getInstitucionById(@PathVariable Integer id){
         return institucionRepository.getInstitucionById(id);
