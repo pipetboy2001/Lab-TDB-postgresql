@@ -19,7 +19,7 @@
           <td>{{ institucion.descrip }}</td>
           <td>
             <!--Botones-->
-            <button v-on:click="editar(institucion.id)" type="button" class="btn btn-warning">Editar</button>
+            <button v-on:click="editarInstitucion(institucion.id)" type="button" class="btn btn-warning">Editar</button>
             <button type="button" class="btn btn-danger">Borrar</button>
           </td>
         </tr>
@@ -42,7 +42,6 @@ export default {
   },
   methods: {
     getTodos () {
-      console.log('hola desde metro')
       axios.get('http://localhost:3000/instituciones')
         .then(response => {
           console.log(response.data)
@@ -52,8 +51,11 @@ export default {
           this.errors.push(e)
         })
     },
-    editar (id) {
+    editarInstitucion (id) {
       this.$router.push('/instituciones-editar/' + id)
+    },
+    nuevaInstitucion () {
+      this.$router.push('/instituciones-crear/')
     }
   }
 

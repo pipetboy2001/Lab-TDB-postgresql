@@ -3,12 +3,12 @@
       <form>
         <div class="form-group">
         <label for="nombre">Nombre</label>
-          <input type="text" class="form-control" id="nombre" v-model="form.nombre">
+          <input type="text" class="form-control" maxlength="100" id="nombre" v-model="form.nombre" required>
           <small id="nombreAyuda" class="form-text text-muted">Ingrese el nombre a cambiar.</small>
         </div>
           <div class="form-group">
           <label for="descripcion">Descripción</label>
-          <input type="text" class="form-control" id="description" v-model="form.descrip">
+          <input type="text" class="form-control" maxlength="400" id="description" v-model="form.descrip" required>
           <small id="descripcionAyuda" class="form-text text-muted">Ingrese la descripción a cambiar.</small>
         </div>
         <button type="submit" class="btn btn-primary" v-on:click="editar()">EDITAR</button>

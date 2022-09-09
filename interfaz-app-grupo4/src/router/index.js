@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Instituciones from '../views/InstitucionesView.vue'
 import InstitucionesEdit from '../views/InstitucionesEditView.vue'
+import InstitucionesCreateView from '@/views/InstitucionesCreateView'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/instituciones-editar/:id',
     name: 'instituciones-editar',
     component: InstitucionesEdit
+  },
+  {
+    path: '/instituciones-crear/',
+    name: 'instituciones-crear/',
+    component: InstitucionesCreateView
   }
 ]
 const router = new VueRouter({
