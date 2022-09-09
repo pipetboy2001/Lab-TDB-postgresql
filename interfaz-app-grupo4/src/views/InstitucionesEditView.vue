@@ -12,6 +12,7 @@
           <small id="descripcionAyuda" class="form-text text-muted">Ingrese la descripción a cambiar.</small>
         </div>
         <button type="submit" class="btn btn-primary" v-on:click="editar()">EDITAR</button>
+        <button type="submit" class="btn btn-dark" v-on:click="cancelar()">CANCELAR</button>
       </form>
     </div>
 
@@ -38,6 +39,9 @@ export default {
       console.log(this.form)
       this.id = this.institucionId
       axios.put('http://localhost:3000/instituciones', this.form)
+      this.$router.push('/instituciones')
+    },
+    cancelar () {
       this.$router.push('/instituciones')
     }
   },
