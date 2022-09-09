@@ -40,6 +40,11 @@ export default {
       pagina: 1
     }
   },
+  methods: {
+    editar (id) {
+      this.$router.push('/institucionesEdit/' + id)
+    }
+  },
   mounted: function () {
     const url = 'http://localhost:3000/instituciones' + this.listaInstituciones
     axios.get(url).then(data => {
