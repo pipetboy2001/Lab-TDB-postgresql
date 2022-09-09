@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 public class Institucion {
 
+    //Se establece el modelo para institucion
+    //Se genera un constructor y sus repectivos selectores.
     public Integer id;
     public String nombre;
     public String descrip;

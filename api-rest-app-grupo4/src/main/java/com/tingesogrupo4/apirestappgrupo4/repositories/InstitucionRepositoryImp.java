@@ -14,35 +14,22 @@ import java.util.List;
 @Configuration
 @Repository
 public class InstitucionRepositoryImp implements InstitucionRepository {
+
+    //Implementacion de firmas a traves del uso de sql2o para la conexion con la DB.
     @Autowired
     private Sql2o sql2o;
 
-    @Override
-    public int newId() {
-        int id;
-        String sql = "SELECT MAX(id) FROM institucion";
-
-        System.out.println("Intentando obtener el id desde newId()...");
-        try (Connection conn = sql2o.open()) {
-            id = conn.createQuery(sql).executeScalar(Integer.class);
-            return id;
-        }
-        catch(Exception e){
-            System.out.println("ERROR...");
-            System.out.println(e.getMessage());
-            return 0;
-        }
-
-    }
-
+    //Se crea la institucion
+    //se necesitan el nombre y la descripcion de la institucion
+    //El id no ya que la generacion es autoincremental.
     @Override
     public Institucion createInstitucion(Institucion institucion) {
-        final String query = "insert into institucion (id, nombre, descrip) values (:id, :nombre, :descrip)";
+        final String query = "insert into institucion ( nombre, descrip) values (:nombre,:descrip)";
         System.out.println("Intenta conexion...");
         Connection conn = sql2o.open();
         try(conn){
+            System.out.println("Dentro de Intenta conexion...");
             conn.createQuery(query)
-                    .addParameter("id", institucion.getId())
                     .addParameter("nombre", institucion.getName())
                     .addParameter("descrip", institucion.getDescription())
                     .executeUpdate();
@@ -58,7 +45,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         return institucion;
     }
 
-
+    //Getter de instituciones por el id, se requiere del id a buscar.
     @Override
     public Institucion getInstitucionById(Integer id) {
         System.out.println("Intento getInstitucionById...");
@@ -81,6 +68,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
     }
 
 
+    //Getter de todas las instituciones (sin compaginado).
     @Override
     public List<Institucion> getAllInstituciones(){
         final String query = "select * from institucion";
@@ -99,7 +87,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
     }
 
-
+    //Se actualiza la institucion, se requiere de un objeto institucion.
     @Override
     public Institucion updateInstitucion(Institucion institucion){
         final String query = "update institucion set nombre = :nombre, descrip =:descrip  where id = :id";
@@ -121,7 +109,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
     }
 
-
+    //Hard delete para una institucion por id.
     @Override
     public void deleteInstitucionById(Integer id){
         System.out.println("Intento eliminar...");
@@ -141,6 +129,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
             conn.close();
         }
     }
+    //Hard delete para todas las instituciones.
     @Override
     public void deleteInstitucion(){
         System.out.println("Intento eliminar...");

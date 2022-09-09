@@ -5,6 +5,8 @@ import com.tingesogrupo4.apirestappgrupo4.models.Institucion;
 import java.util.List;
 
 public interface InstitucionRepository {
+
+    //Generacion de firmas para consumir desde services.
     Institucion createInstitucion(Institucion institucion);
     Institucion getInstitucionById(Integer id);
 
@@ -13,7 +15,7 @@ public interface InstitucionRepository {
     void deleteInstitucionById(Integer id);
 
     void deleteInstitucion();
-    int newId();
+
 
 
 

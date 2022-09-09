@@ -11,6 +11,8 @@ import org.sql2o.Sql2o;
 @Component
 @Configuration
 public class DatabaseContext {
+    //Componente de configuracion para la conexion con la base de datos.
+    //Se establecen las credenciales para ingresar a esta.
     @Value("${database.url}")
     private String dbUrl;
 
