@@ -1,5 +1,6 @@
 <template>
     <div class="container" style="width:700px;">
+      <h1>EDITAR DATOS</h1>
       <form>
         <div class="form-group">
         <label for="nombre">Nombre</label>
