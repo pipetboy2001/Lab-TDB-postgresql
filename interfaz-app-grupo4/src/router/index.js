@@ -4,7 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import Instituciones from '../views/InstitucionesView.vue'
 import InstitucionesEdit from '../views/InstitucionesEditView.vue'
 import InstitucionesDelete from '../views/InstitucionesDelateView.vue'
-import InstitucionesCreateView from '@/views/InstitucionesCreateView'
+import InstitucionesCreate from '@/views/InstitucionesCreateView'
 
 Vue.use(VueRouter)
 
@@ -33,9 +33,9 @@ const routes = [
     component: InstitucionesEdit
   },
   {
-    path: '/instituciones-crear/',
-    name: 'instituciones-crear/',
-    component: InstitucionesCreateView
+    path: '/InstitucionesCreate/',
+    name: 'InstitucionesCreate/',
+    component: InstitucionesCreate
   },
   {
     path: '/institucionesDelete/:id',

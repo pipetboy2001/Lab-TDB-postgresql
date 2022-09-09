@@ -46,8 +46,21 @@ export default {
       axios.delete('http://localhost:3000/instituciones', { headers: enviar })
         .then(datos => {
           console.log(datos)
+          this.makeToast('BORRADO', 'Institucion eleminada', 'danger')
           this.$router.push('/instituciones')
+        }).catch(error => {
+          console.log(error)
+          this.makeToast('Error', 'No se pudo agregar la institucion', 'error')
         })
+    },
+    makeToast (titulo, texto, tipo) {
+      this.toastCount++
+      this.$bvToast.toast(texto, {
+        title: titulo,
+        variant: tipo,
+        autoHideDelay: 5000,
+        appendToast: true
+      })
     }
   },
   mounted: function () {

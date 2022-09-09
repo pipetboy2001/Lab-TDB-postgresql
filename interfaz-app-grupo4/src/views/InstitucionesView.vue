@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Instituciones CRUD</h1>
-    <button type="button" class="btn btn-primary" v-on:click="nuevaInstitucion()">Añadir</button>
+    <button type="button" class="btn btn-primary" v-on:click="añadir()">Añadir</button>
     <!--Bootstrp table-->
     <table class="table table-hover table-striped table-dark table-bordered table-secondary">
       <thead>
@@ -45,6 +45,9 @@ export default {
     },
     borrar (id) {
       this.$router.push('/institucionesDelete/' + id)
+    },
+    añadir () {
+      this.$router.push('/InstitucionesCreate')
     }
   },
   mounted: function () {

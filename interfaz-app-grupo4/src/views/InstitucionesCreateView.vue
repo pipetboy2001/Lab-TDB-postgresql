@@ -1,5 +1,6 @@
 <template>
   <div class="container" style="width:700px;">
+    <h1>AÑADIR NUEVA INSTITUCION</h1>
     <form>
       <div class="form-group">
         <label for="nombre">Nombre</label>
@@ -12,6 +13,7 @@
         <small id="descripcionAyuda" class="form-text text-muted">Ingrese la descripción de la institución.</small>
       </div>
       <button type="submit" class="btn btn-primary" v-on:click="crear()">CREAR</button>
+      <button type="submit" class="btn btn-dark" v-on:click="cancelar()">CANCELAR</button>
     </form>
   </div>
 
@@ -27,15 +29,36 @@ export default {
     return {
       form: {
         nombre: '',
-        descrip: ''
+        descrip: '',
+        token: ''
       }
     }
   },
   methods: {
     crear () {
+      this.form.token = localStorage.getItem('token')
       axios.post('http://localhost:3000/instituciones', this.form)
+        .then(data => {
+          console.log(data)
+          this.makeToast('Listo', 'Institucion agregada', 'success')
+        }).catch(error => {
+          console.log(error)
+          this.makeToast('Error', 'No se pudo agregar la institucion', 'error')
+        })
+    },
+    cancelar () {
       this.$router.push('/instituciones')
+    },
+    makeToast (titulo, texto, tipo) {
+      this.toastCount++
+      this.$bvToast.toast(texto, {
+        title: titulo,
+        variant: tipo,
+        autoHideDelay: 5000,
+        appendToast: true
+      })
     }
+
   }
 }
 </script>
