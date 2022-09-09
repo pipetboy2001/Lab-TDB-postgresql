@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Instituciones from '../views/InstitucionesView.vue'
+import InstitucionesEdit from '../views/InstitucionesEditView.vue'
+import InstitucionesCreate from '../views/InstitucionesCreateView.vue'
 
 Vue.use(VueRouter)
 
@@ -23,9 +25,18 @@ const routes = [
     path: '/instituciones',
     name: 'instituciones',
     component: Instituciones
+  },
+  {
+    path: '/instituciones/editar/:id',
+    name: 'InstitucionesEdit',
+    component: InstitucionesEdit
+  },
+  {
+    path: '/instituciones/crear',
+    name: 'InstitucionesCreate',
+    component: InstitucionesCreate
   }
 ]
-
 const router = new VueRouter({
   routes
 })

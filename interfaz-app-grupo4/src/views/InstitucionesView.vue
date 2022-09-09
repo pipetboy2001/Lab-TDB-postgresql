@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Instituciones CRUD</h1>
-    <button type="button" class="btn btn-primary">Añadir</button>
+    <button type="button" class="btn btn-primary" v-on:click="nuevaInstitucion()">Añadir</button>
     <!--Bootstrp table-->
     <table class="table table-striped table-dark table-bordered table-secondary">
       <thead>
@@ -13,13 +13,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr scope="row" v-for="todos in todos" :key="todos.id">
-          <td>{{ todos.id }}</td>
-          <td>{{ todos.nombre }}</td>
-          <td>{{ todos.descrip }}</td>
+        <tr scope="row" v-for="institucion in todos" :key="institucion.id">
+          <td>{{ institucion.id }}</td>
+          <td>{{ institucion.nombre }}</td>
+          <td>{{ institucion.descrip }}</td>
           <td>
             <!--Botones-->
-            <button type="button" class="btn btn-warning">Editar</button>
+            <button v-on:click="editar(institucion.id)" type="button" class="btn btn-warning">Editar</button>
             <button type="button" class="btn btn-danger">Borrar</button>
           </td>
         </tr>
@@ -31,7 +31,6 @@
 <script>
 import axios from 'axios'
 
-// import axios from 'axios'
 export default {
   data () {
     return {
@@ -39,7 +38,6 @@ export default {
     }
   },
   mounted () {
-    console.log('hola monte')
     this.getTodos()
   },
   methods: {
@@ -53,7 +51,14 @@ export default {
         .catch(e => {
           this.errors.push(e)
         })
+    },
+    editar (id) {
+      this.$router.push('/instituciones/crear');
+    },
+    nuevaInstitucion () {
     }
+
   }
+
 }
 </script>
