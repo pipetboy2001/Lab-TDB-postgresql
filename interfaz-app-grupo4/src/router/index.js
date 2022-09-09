@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Instituciones from '../views/InstitucionesView.vue'
 import InstitucionesEdit from '../views/InstitucionesEditView.vue'
+import InstitucionesDelete from '../views/InstitucionesDelateView.vue'
 import InstitucionesCreateView from '@/views/InstitucionesCreateView'
 
 Vue.use(VueRouter)
@@ -35,6 +36,11 @@ const routes = [
     path: '/instituciones-crear/',
     name: 'instituciones-crear/',
     component: InstitucionesCreateView
+  },
+  {
+    path: '/institucionesDelete/:id',
+    name: 'institucionesDelete',
+    component: InstitucionesDelete
   }
 ]
 const router = new VueRouter({

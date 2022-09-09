@@ -20,7 +20,7 @@
           <td>
             <!--Botones-->
             <button v-on:click="editar(institucion.id)" type="button" class="btn btn-warning">Editar</button>
-            <button type="button" class="btn btn-danger">Borrar</button>
+            <button v-on:click="borrar(institucion.id)" type="button" class="btn btn-danger">Borrar</button>
           </td>
         </tr>
       </tbody>
@@ -42,6 +42,9 @@ export default {
   methods: {
     editar (id) {
       this.$router.push('/institucionesEdit/' + id)
+    },
+    borrar (id) {
+      this.$router.push('/institucionesDelete/' + id)
     }
   },
   mounted: function () {
