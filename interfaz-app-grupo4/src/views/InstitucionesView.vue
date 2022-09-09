@@ -3,7 +3,7 @@
     <h1>Instituciones CRUD</h1>
     <button type="button" class="btn btn-primary" v-on:click="nuevaInstitucion()">Añadir</button>
     <!--Bootstrp table-->
-    <table class="table table-striped table-dark table-bordered table-secondary">
+    <table class="table table-hover table-striped table-dark table-bordered table-secondary">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr scope="row" v-for="institucion in todos" :key="institucion.id">
+        <tr scope="row" v-for="institucion in pagina" :key="institucion.id" v-on:click="editar(institucion.id)">
           <td>{{ institucion.id }}</td>
           <td>{{ institucion.nombre }}</td>
           <td>{{ institucion.descrip }}</td>
@@ -25,6 +25,7 @@
         </tr>
       </tbody>
     </table>
+
   </div>
 </template>
 
@@ -32,33 +33,18 @@
 import axios from 'axios'
 
 export default {
+  name: 'institucionesView',
   data () {
     return {
-      todos: null
+      listaInstituciones: [],
+      pagina: 1
     }
   },
-  mounted () {
-    this.getTodos()
-  },
-  methods: {
-    getTodos () {
-      console.log('hola desde meto')
-      axios.get('http://localhost:3000/instituciones')
-        .then(response => {
-          console.log(response.data)
-          this.todos = response.data
-        })
-        .catch(e => {
-          this.errors.push(e)
-        })
-    },
-    editar (id) {
-      this.$router.push('/instituciones/crear');
-    },
-    nuevaInstitucion () {
-    }
-
+  mounted: function () {
+    const url = 'http://localhost:3000/instituciones' + this.listaInstituciones
+    axios.get(url).then(data => {
+      this.pagina = data.data
+    })
   }
-
 }
 </script>
