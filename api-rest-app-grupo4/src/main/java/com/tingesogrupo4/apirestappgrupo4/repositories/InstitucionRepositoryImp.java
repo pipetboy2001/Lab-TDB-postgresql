@@ -24,6 +24,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
     //El id no ya que la generacion es autoincremental.
     @Override
     public Institucion createInstitucion(Institucion institucion) {
+
         final String query = "insert into institucion ( nombre, descrip) values (:nombre,:descrip)";
         System.out.println("Intenta conexion...");
         Connection conn = sql2o.open();
