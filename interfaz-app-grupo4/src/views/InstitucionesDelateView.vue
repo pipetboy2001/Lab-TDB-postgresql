@@ -43,7 +43,7 @@ export default {
         id: this.institucionId,
         token: this.form.token
       }
-      axios.delete('http://localhost:3000/instituciones', { headers: enviar })
+      axios.delete('http://localhost:3000/instituciones/' + this.institucionId, { headers: enviar })
         .then(datos => {
           console.log(datos)
           this.makeToast('BORRADO', 'Institucion eleminada', 'danger')
@@ -63,6 +63,7 @@ export default {
       })
     }
   },
+
   mounted: function () {
     this.institucionId = this.$route.params.id
     const endpointInstitucion = 'http://localhost:3000/instituciones/' + this.institucionId

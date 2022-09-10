@@ -41,6 +41,7 @@ export default {
         .then(data => {
           console.log(data)
           this.makeToast('Listo', 'Institucion agregada', 'success')
+          this.$router.push('/instituciones')
         }).catch(error => {
           console.log(error)
           this.makeToast('Error', 'No se pudo agregar la institucion', 'error')
@@ -54,7 +55,7 @@ export default {
       this.$bvToast.toast(texto, {
         title: titulo,
         variant: tipo,
-        autoHideDelay: 5000,
+        autoHideDelay: 10000,
         appendToast: true
       })
     }
