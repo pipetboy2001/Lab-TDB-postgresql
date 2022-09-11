@@ -14,7 +14,7 @@ public interface InstitucionRepository {
     Institucion updateInstitucion(Institucion institucion);
     void deleteInstitucionById(Integer id);
 
-    void deleteInstitucion();
+    void deleteInstituciones();
 
     Integer generateId();
 

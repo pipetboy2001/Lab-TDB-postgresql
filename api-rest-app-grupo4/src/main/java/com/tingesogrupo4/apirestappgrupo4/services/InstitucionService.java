@@ -44,7 +44,7 @@ public class InstitucionService {
 
     @DeleteMapping("/instituciones")
     public void deleteInstituciones(){
-        institucionRepository.deleteInstitucion();
+        institucionRepository.deleteInstituciones();
     }
 
 }

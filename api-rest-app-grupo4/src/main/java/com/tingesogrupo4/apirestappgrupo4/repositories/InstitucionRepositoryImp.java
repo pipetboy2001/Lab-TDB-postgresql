@@ -179,7 +179,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
     }
     //Hard delete para todas las instituciones.
     @Override
-    public void deleteInstitucion(){
+    public void deleteInstituciones(){
         System.out.println("Intento eliminar...");
         final String query = "DELETE FROM institucion";
         Connection conn = sql2o.open();

@@ -49,13 +49,13 @@ export default {
   },
   methods: {
     editar (id) {
-      this.$router.push('/institucionesEdit?id=' + id)
+      this.$router.push('/instituciones-edit?id=' + id)
     },
     borrar (id) {
-      this.$router.push('/institucionesDelete?id=' + id)
+      this.$router.push('/instituciones-delete?id=' + id)
     },
     añadir () {
-      this.$router.push('/InstitucionesCreate')
+      this.$router.push('/instituciones-create')
     },
     borrarTodos () {
       axios.delete('http://localhost:3000/instituciones')
