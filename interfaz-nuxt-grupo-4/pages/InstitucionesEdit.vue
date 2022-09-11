@@ -4,12 +4,12 @@
       <form>
         <div class="form-group">
         <label for="nombre">Nombre</label>
-          <input type="text" class="form-control" maxlength="100" id="nombre" v-model="form.nombre" required>
+          <input type="text" class="form-control" minlength="3" maxlength="100" id="nombre" v-model="form.nombre" required>
           <small id="nombreAyuda" class="form-text text-muted">Ingrese el nombre a cambiar.</small>
         </div>
           <div class="form-group">
           <label for="descripcion">Descripción</label>
-          <input type="text" class="form-control" maxlength="400" id="description" v-model="form.descrip" required>
+          <input type="text" class="form-control" minlength="5" maxlength="400" id="description" v-model="form.descrip" required>
           <small id="descripcionAyuda" class="form-text text-muted">Ingrese la descripción a cambiar.</small>
         </div>
         <button type="submit" class="btn btn-primary" v-on:click="editar()">EDITAR</button>
@@ -48,13 +48,14 @@ export default {
     }
   },
   mounted: function () {
-    this.institucionId = this.$route.params.id
+    this.institucionId = this.$route.query.id
     const endpointInstitucion = 'http://localhost:3000/instituciones/' + this.institucionId
     axios.get(endpointInstitucion).then(
       response => {
         this.form.id = this.institucionId
         this.form.nombre = response.data.nombre
         this.form.descrip = response.data.descrip
+        console.log(this.form)
       }
     )
   }

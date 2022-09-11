@@ -43,8 +43,13 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
   ],
+  bootstrapCSS: false,
+  bootstrapVueCSS: false,
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+    babel: {
+      compact: true,
+    },
+  },
 }

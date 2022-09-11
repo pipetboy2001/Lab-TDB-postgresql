@@ -1,21 +1,23 @@
 <template>
     <div class="container" style="width:700px;">
-        <h1>ELEMINAR DATOS</h1>
-        <form>
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" maxlength="100" id="nombre" v-model="form.nombre" required>
-            </div>
-            <div class="form-group">
-                <label for="descripcion">Descripción</label>
-                <input type="text" class="form-control" maxlength="400" id="description" v-model="form.descrip"
-                    required>
-            </div>
-            <button type="submit" class="btn btn-danger" v-on:click="eliminar()">ELEMINAR</button>
-            <button type="submit" class="btn btn-dark" v-on:click="cancelar()">CANCELAR</button>
-        </form>
+      <h1>¿Eliminar Institución?</h1>
+      <table class="table table-hover table-striped table-dark table-bordered table-secondary">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NOMBRE</th>
+          <th scope="col">DESCRIPCION</th>
+        </tr>
+        </thead>
+        <tbody>
+          <td>{{ form.id }}</td>
+          <td>{{ form.nombre }}</td>
+          <td>{{ form.descrip }}</td>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-danger" v-on:click="eliminar()">ELIMINAR</button>
+      <button type="submit" class="btn btn-dark" v-on:click="cancelar()">CANCELAR</button>
     </div>
-
 </template>
 
 <script>
@@ -65,7 +67,7 @@ export default {
   },
 
   mounted: function () {
-    this.institucionId = this.$route.params.id
+    this.institucionId = this.$route.query.id
     const endpointInstitucion = 'http://localhost:3000/instituciones/' + this.institucionId
     axios.get(endpointInstitucion).then(
       response => {

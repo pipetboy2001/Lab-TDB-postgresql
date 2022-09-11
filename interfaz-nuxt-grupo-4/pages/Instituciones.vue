@@ -49,10 +49,10 @@ export default {
   },
   methods: {
     editar (id) {
-      this.$router.push('/institucionesEdit/' + id)
+      this.$router.push('/institucionesEdit?id=' + id)
     },
     borrar (id) {
-      this.$router.push('/institucionesDelete/' + id)
+      this.$router.push('/institucionesDelete?id=' + id)
     },
     añadir () {
       this.$router.push('/InstitucionesCreate')
