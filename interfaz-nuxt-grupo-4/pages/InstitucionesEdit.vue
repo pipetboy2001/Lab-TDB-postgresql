@@ -41,10 +41,10 @@ export default {
       console.log(this.form)
       this.id = this.institucionId
       axios.put('http://localhost:3000/instituciones', this.form)
-      this.$router.push('../instituciones')
+      this.$router.push('/instituciones')
     },
     cancelar () {
-      this.$router.push('../instituciones')
+      this.$router.push('/instituciones')
     }
   },
   mounted: function () {

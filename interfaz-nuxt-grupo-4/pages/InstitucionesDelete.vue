@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     cancelar () {
-      this.$router.push('../instituciones')
+      this.$router.push('/instituciones')
     },
     eliminar () {
       const enviar = {
@@ -47,7 +47,7 @@ export default {
         .then(datos => {
           console.log(datos)
           this.makeToast('BORRADO', 'Institucion eleminada', 'danger')
-          this.$router.push('../instituciones')
+          this.$router.push('/instituciones')
         }).catch(error => {
           console.log(error)
           this.makeToast('Error', 'No se pudo agregar la institucion', 'error')

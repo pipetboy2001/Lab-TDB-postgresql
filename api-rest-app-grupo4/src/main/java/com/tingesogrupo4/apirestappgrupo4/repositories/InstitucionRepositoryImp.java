@@ -19,36 +19,76 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
     @Autowired
     private Sql2o sql2o;
 
+    @Override
+    public Integer generateId(){
+        Integer newId;
+        String queryId = "select max(id) from institucion";
+        Connection conn = sql2o.open();
+        try(conn){
+            System.out.println("Entro dentro de try...");
+            newId=conn.createQuery(queryId)
+                    .executeScalar(Integer.class);
+            if(newId==null){
+                return 0;
+            }
+            else {
+                return newId;
+            }
+
+        }
+        catch(Exception e){
+            System.out.println("Entro en la excepcion...");
+            return 0;
+        }
+        finally {
+            conn.close();
+        }
+
+
+
+
+    }
     //Se crea la institucion
     //se necesitan el nombre y la descripcion de la institucion
     //El id no ya que la generacion es autoincremental.
     @Override
     public Institucion createInstitucion(Institucion institucion) {
+        if(institucion.getName().length()!=0 && institucion.getDescription().length()!=0){
 
-        final String query = "insert into institucion ( nombre, descrip) values (:nombre,:descrip)";
+        System.out.println(institucion.getName()+"nombres y desc"+institucion.getDescription());
+
+
+        Integer myId = generateId()+1;
+        System.out.println("myId = "+myId);
+        final String query = "insert into institucion (id,nombre, descrip) values (:myId,:nombre,:descrip)";
         System.out.println("Intenta conexion...");
         Connection conn = sql2o.open();
-        try(conn){
+        try (conn) {
             System.out.println("Dentro de Intenta conexion...");
             conn.createQuery(query)
+                    .addParameter("myId", myId)
                     .addParameter("nombre", institucion.getName())
                     .addParameter("descrip", institucion.getDescription())
                     .executeUpdate();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
-        }
-        finally {
+        } finally {
             conn.close();
         }
         System.out.println("Conexion exitosa!... Dato ingresado en la base de datos...");
         return institucion;
     }
+        else{
+            System.out.println("Else null createInstitucion...");
+            return null;
+        }
+    }
 
     //Getter de instituciones por el id, se requiere del id a buscar.
     @Override
     public Institucion getInstitucionById(Integer id) {
+
         System.out.println("Intento getInstitucionById...");
         final String query = "select * from institucion where id = :id";
         final Institucion institucion;
@@ -66,6 +106,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         finally {
             conn.close();
         }
+
     }
 
 
@@ -91,6 +132,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
     //Se actualiza la institucion, se requiere de un objeto institucion.
     @Override
     public Institucion updateInstitucion(Institucion institucion){
+        if(institucion.getName().length()!=0 && institucion.getDescription().length()!=0){
         final String query = "update institucion set nombre = :nombre, descrip =:descrip  where id = :id";
         Connection conn = sql2o.open();
         try(conn){
@@ -107,6 +149,11 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
         finally {
             conn.close();
+        }
+        }
+        else{
+            System.out.println("Else null createInstitucion...");
+            return null;
         }
     }
 

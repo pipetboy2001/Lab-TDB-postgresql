@@ -16,6 +16,8 @@ public interface InstitucionRepository {
 
     void deleteInstitucion();
 
+    Integer generateId();
+
 
 
 

@@ -41,14 +41,14 @@ export default {
         .then(data => {
           console.log(data)
           this.makeToast('Listo', 'Institucion agregada', 'success')
-          this.$router.push('../instituciones')
+          this.$router.push('/instituciones')
         }).catch(error => {
           console.log(error)
           this.makeToast('Error', 'No se pudo agregar la institucion', 'error')
         })
     },
     cancelar () {
-      this.$router.push('../instituciones')
+      this.$router.push('/instituciones')
     },
     makeToast (titulo, texto, tipo) {
       this.toastCount++
