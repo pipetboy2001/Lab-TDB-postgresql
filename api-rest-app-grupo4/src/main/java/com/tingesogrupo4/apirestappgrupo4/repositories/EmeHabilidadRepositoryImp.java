@@ -84,7 +84,7 @@ public class EmeHabilidadRepositoryImp implements EmeHabilidadRepository {
     @Override
     public List<EmeHabilidad> getAllEmeHabilidad() {
 
-        final String query = "select * from tarea";
+        final String query = "select * from eme_habilidad";
         final List<EmeHabilidad> emeHabilidadList;
         Connection conn = sql2o.open();
         try(conn){
@@ -102,8 +102,7 @@ public class EmeHabilidadRepositoryImp implements EmeHabilidadRepository {
 
     @Override
     public EmeHabilidad updateEmeHabilidad(EmeHabilidad emeHabilidad) {
-
-        final String query = "update eme_habilidad set id_emergencia:=id_emergencia and id_habilidad:=id_habilidad where id = :id";
+        final String query = "update eme_habilidad set id_emergencia=:id_emergencia, id_habilidad=:id_habilidad where id = :id";
         Connection conn = sql2o.open();
         try(conn){
             conn.createQuery(query)
