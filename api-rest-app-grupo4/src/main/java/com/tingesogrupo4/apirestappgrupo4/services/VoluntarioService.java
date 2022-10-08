@@ -16,33 +16,33 @@ public class VoluntarioService {
         this.VoluntarioRepository = VoluntarioRepository;
     }
 
-    @PostMapping("/Voluntarios")
+    @PostMapping("/voluntarios")
     public Voluntario createVoluntario(@RequestBody Voluntario Voluntario){
         System.out.println("Intento posting...");
         return VoluntarioRepository.createVoluntario(Voluntario);
     }
 
-    @GetMapping("/Voluntarios/{id}")
+    @GetMapping("/voluntarios/{id}")
     public Voluntario getVoluntarioById(@PathVariable Integer id){
         return VoluntarioRepository.getVoluntarioById(id);
     }
 
-    @GetMapping("/Voluntarios")
+    @GetMapping("/voluntarios")
     public List<Voluntario> getAllVoluntarioes(){
         return VoluntarioRepository.getAllVoluntarios();
 
     }
-    @PutMapping("/Voluntarios")
+    @PutMapping("/voluntarios")
     public Voluntario updateVoluntarioes(@RequestBody Voluntario Voluntario){
         return VoluntarioRepository.updateVoluntario(Voluntario);
     }
 
-    @DeleteMapping("/Voluntarios/{id}")
+    @DeleteMapping("/voluntarios/{id}")
     public void deleteVoluntarioById(@PathVariable Integer id){
         VoluntarioRepository.deleteVoluntarioById(id);
     }
 
-    @DeleteMapping("/Voluntarioes")
+    @DeleteMapping("/voluntarios")
     public void deleteVoluntarioes(){
         VoluntarioRepository.deleteVoluntarios();
     }
