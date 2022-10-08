@@ -22,7 +22,7 @@ public class EmergenciaService {
         return emergenciaRepository.createEmergencia(emergencia);
     }
     @GetMapping("/emergencia/{id}")
-    public Emergencia getInstitucionById(@PathVariable Integer id){
+    public Emergencia getEmergenciaById(@PathVariable Integer id){
         return emergenciaRepository.getEmergenciaById(id);
     }
 

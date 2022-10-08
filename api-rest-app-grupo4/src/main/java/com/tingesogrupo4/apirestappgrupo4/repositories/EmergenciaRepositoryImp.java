@@ -68,8 +68,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     @Override
     public Emergencia getEmergenciaById(Integer id) {
 
-        System.out.println("Intento getTarea...");
-        final String query = "select * from tarea where id = :id";
+        final String query = "select * from emergencia where id = :id";
         final Emergencia emergencia;
         Connection conn = sql2o.open();
         try(conn){
@@ -90,7 +89,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     @Override
     public List<Emergencia> getAllEmergencia() {
 
-        final String query = "select * from tarea";
+        final String query = "select * from emergencia";
         final List<Emergencia> emergenciaList;
         Connection conn = sql2o.open();
         try(conn){
