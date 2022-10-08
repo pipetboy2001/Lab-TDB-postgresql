@@ -1,6 +1,7 @@
 package com.tingesogrupo4.apirestappgrupo4.repositories;
 
-import com.tingesogrupo4.apirestappgrupo4.models.Voluntario;
+
+import com.tingesogrupo4.apirestappgrupo4.models.VolHabilidad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -13,8 +14,7 @@ import java.util.List;
 @Component
 @Configuration
 @Repository
-public class VoluntarioRepositoryImp implements VoluntarioRepository{
-    //Implementacion de firmas a traves del uso de sql2o para la conexion con la DB.
+public class VolHabilidadRepositoryImp implements VolHabilidadRepository{
     @Autowired
     private Sql2o sql2o;
 
@@ -42,28 +42,21 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
         finally {
             conn.close();
         }
-
-
-
-
     }
-    //Se crea el voluntario
-    //se necesitan el nombre y la fecha de nacimiento del voluntario
+
     @Override
-    public Voluntario createVoluntario(Voluntario voluntario) {
-
-            System.out.println(voluntario.getNombre()+"nombres y desc"+voluntario.getFnacimiento());
-
+    public VolHabilidad createVolHabilidad(VolHabilidad volHabilidad) {
             Integer myId = generateId()+1;
             System.out.println("myId = "+myId);
-            final String query = "insert into voluntario (id,nombre) values (:myId,:nombre)";
+            final String query = "insert into vol_habilidad (id,id_voluntario, id_habilidad) values (:myId,:id_voluntario,:id_habilidad)";
             System.out.println("Intenta conexion...");
             Connection conn = sql2o.open();
             try (conn) {
                 System.out.println("Dentro de Intenta conexion...");
                 conn.createQuery(query)
                         .addParameter("myId", myId)
-                        .addParameter("nombre", voluntario.getNombre())
+                        .addParameter("id_voluntario", volHabilidad.getId_voluntario())
+                        .addParameter("id_habilidad", volHabilidad.getId_habilidad())
                         .executeUpdate();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -72,23 +65,21 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
                 conn.close();
             }
             System.out.println("Conexion exitosa!... Dato ingresado en la base de datos...");
-            return voluntario;
-
+            return volHabilidad;
     }
 
-    //Getter de voluntarioes por el id, se requiere del id a buscar.
     @Override
-    public Voluntario getVoluntarioById(Integer id) {
+    public VolHabilidad getVolHabilidadById(Integer id) {
 
         System.out.println("Intento getvoluntarioById...");
-        final String query = "select * from voluntario where id = :id";
-        final Voluntario voluntario;
+        final String query = "select * from vol_habilidad where id = :id";
+        final VolHabilidad volHabilidad;
         Connection conn = sql2o.open();
         try(conn){
-            voluntario = conn.createQuery(query)
+            volHabilidad = conn.createQuery(query)
                     .addParameter("id", id)
-                    .executeAndFetchFirst(Voluntario.class);
-            return voluntario;
+                    .executeAndFetchFirst(VolHabilidad.class);
+            return volHabilidad;
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -97,19 +88,16 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
         finally {
             conn.close();
         }
-
     }
 
-
-    //Getter de todas las voluntarioes (sin compaginado).
     @Override
-    public List<Voluntario> getAllVoluntarios(){
-        final String query = "select * from voluntario";
-        final List<Voluntario> voluntarioList;
+    public List<VolHabilidad> getAllVolHabilidad(){
+        final String query = "select * from vol_habilidad";
+        final List<VolHabilidad> VolHabilidadList;
         Connection conn = sql2o.open();
         try(conn){
-            voluntarioList = conn.createQuery(query).executeAndFetch(Voluntario.class);
-            return voluntarioList;
+            VolHabilidadList = conn.createQuery(query).executeAndFetch(VolHabilidad.class);
+            return VolHabilidadList;
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -119,40 +107,37 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
             conn.close();
         }
     }
+
 
     //Se actualiza la voluntario, se requiere de un objeto voluntario.
     @Override
-    public Voluntario updateVoluntario(Voluntario voluntario){
-        if(voluntario.getNombre().length()!=0 && voluntario.getFnacimiento().toLocalDate() != null){
-            final String query = "update voluntario set nombre = :nombre, fnacimiento =:fnacimiento  where id = :id";
-            Connection conn = sql2o.open();
-            try(conn){
-                conn.createQuery(query)
-                        .addParameter("id", voluntario.getId())
-                        .addParameter("nombre", voluntario.getNombre())
-                        .addParameter("fnacimiento", voluntario.getFnacimiento())
-                        .executeUpdate();
-                return voluntario;
-            }
-            catch(Exception e){
-                System.out.println(e.getMessage());
-                return null;
-            }
-            finally {
-                conn.close();
-            }
+    public VolHabilidad updateVolHabilidad(VolHabilidad volHabilidad){
+
+        final String query = "update vol_habilidad set id_voluntario = :id_voluntario, id_habilidad =:id_habilidad  where id = :id";
+        Connection conn = sql2o.open();
+        try(conn){
+            conn.createQuery(query)
+                    .addParameter("id", volHabilidad.getId())
+                    .addParameter("id_voluntario", volHabilidad.getId_voluntario())
+                    .addParameter("id_habilidad", volHabilidad.getId_habilidad())
+                    .executeUpdate();
+            return volHabilidad;
         }
-        else{
-            System.out.println("Else null createvoluntario...");
+        catch(Exception e){
+            System.out.println(e.getMessage());
             return null;
         }
+        finally {
+            conn.close();
+        }
+
     }
 
     //Hard delete para una voluntario por id.
     @Override
-    public void deleteVoluntarioById(Integer id){
+    public void deleteVolHabilidadById(Integer id){
         System.out.println("Intento eliminar...");
-        final String query = "DELETE FROM voluntario WHERE id=:id";
+        final String query = "DELETE FROM vol_habilidad WHERE id=:id";
         Connection conn = sql2o.open();
         try(conn){
             conn.createQuery(query)
@@ -170,9 +155,9 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
     }
     //Hard delete para todas las voluntarioes.
     @Override
-    public void deleteVoluntarios(){
+    public void deleteAllVolHabilidades(){
         System.out.println("Intento eliminar...");
-        final String query = "DELETE FROM voluntario";
+        final String query = "DELETE FROM vol_habilidad";
         Connection conn = sql2o.open();
         try(conn){
             conn.createQuery(query)
@@ -187,4 +172,10 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
             conn.close();
         }
     }
+
+
+
+
+
+
 }
