@@ -44,9 +44,6 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
             conn.close();
         }
 
-
-
-
     }
     //Se crea la institucion
     //se necesitan el nombre y la descripcion de la institucion
@@ -117,7 +114,8 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         final List<Institucion> institucionList;
         Connection conn = sql2o.open();
         try(conn){
-            institucionList = conn.createQuery(query).executeAndFetch(Institucion.class);
+            institucionList = conn.createQuery(query)
+                    .executeAndFetch(Institucion.class);
             return institucionList;
         }
         catch(Exception e){
