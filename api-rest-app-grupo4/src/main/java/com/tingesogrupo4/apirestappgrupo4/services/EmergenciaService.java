@@ -29,7 +29,6 @@ public class EmergenciaService {
     @GetMapping("/emergencia")
     public List<Emergencia> getAllEmergencia(){
         return emergenciaRepository.getAllEmergencia();
-
     }
     @PutMapping("/emergencia")
     public Emergencia updateEmergencia(@RequestBody Emergencia emergencia){
