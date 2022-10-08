@@ -1,9 +1,7 @@
 package com.tingesogrupo4.apirestappgrupo4.services;
 
 import com.tingesogrupo4.apirestappgrupo4.models.EmeHabilidad;
-import com.tingesogrupo4.apirestappgrupo4.models.Emergencia;
 import com.tingesogrupo4.apirestappgrupo4.repositories.EmeHabilidadRepository;
-import com.tingesogrupo4.apirestappgrupo4.repositories.EmergenciaRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,32 +16,32 @@ public class EmeHabilidadService {
         this.emeHabilidadRepository = emeHabilidadRepository;
     }
 
-    @PostMapping("/emehabilidad")
+    @PostMapping("/emehabilidades")
     public EmeHabilidad createEmergencia(@RequestBody EmeHabilidad emeHabilidad){
         System.out.println("Intento posting emergencia...");
         return emeHabilidadRepository.createEmeHabilidad(emeHabilidad);
     }
-    @GetMapping("/emehabilidad/{id}")
+    @GetMapping("/emehabilidades/{id}")
     public EmeHabilidad getEmeHabilidadById(@PathVariable Integer id){
         return emeHabilidadRepository.getEmeHabilidadById(id);
     }
 
-    @GetMapping("/emehabilidad")
+    @GetMapping("/emehabilidades")
     public List<EmeHabilidad> getAllEmeHabilidad(){
         return emeHabilidadRepository.getAllEmeHabilidad();
 
     }
-    @PutMapping("/emehabilidad")
+    @PutMapping("/emehabilidades")
     public EmeHabilidad updateEmeHabilidad(@RequestBody EmeHabilidad emeHabilidad){
         return emeHabilidadRepository.updateEmeHabilidad(emeHabilidad);
     }
 
-    @DeleteMapping("/emehabilidad/{id}")
+    @DeleteMapping("/emehabilidades/{id}")
     public void deleteEmeHabilidadById(@PathVariable Integer id){
         emeHabilidadRepository.deleteEmeHabilidadById(id);
     }
 
-    @DeleteMapping("/emehabilidad")
+    @DeleteMapping("/emehabilidades")
     public void deleteEmeHabilidad(){
         emeHabilidadRepository.deleteEmeHabilidad();
     }
