@@ -20,28 +20,28 @@ public class RankingVoluntariosService {
         this.rankingVoluntariosRepository = rkvR;
     }
 
-    @PostMapping("/ranking/voluntarios")
+    @PostMapping("/ranking_voluntariados")
     public RankingVoluntarios createRankingVoluntario(@RequestBody RankingVoluntarios RKV){
         System.out.println("Intento posting ranking voluntarios...");
         return rankingVoluntariosRepository.createRankingVoluntario(RKV);
     }
 
-    @GetMapping("/ranking/voluntarios/{id}")
+    @GetMapping("/ranking_voluntariados/{id}")
     public RankingVoluntarios getRankingVoluntarioById(@PathVariable Integer id){
         return rankingVoluntariosRepository.getRankingVoluntario(id);
     }
 
-    @GetMapping("/ranking/voluntarios")
+    @GetMapping("/ranking_voluntariados")
     public List<RankingVoluntarios> getAllRankingVoluntarios(){
         return rankingVoluntariosRepository.getAllRankingVoluntario();
     }
 
-    @PutMapping("/ranking/voluntarios")
+    @PutMapping("/ranking_voluntariados")
     public RankingVoluntarios updateRankingVoluntario(@RequestBody RankingVoluntarios RKV){
         return rankingVoluntariosRepository.updateRankingVoluntario(RKV);
     }
 
-    @DeleteMapping("/ranking/voluntarios/{id}")
+    @DeleteMapping("/ranking_voluntariados/{id}")
     public void deleteRankingVoluntarioById(@PathVariable Integer id){
         rankingVoluntariosRepository.deleteRankingVoluntarioById(id);
     }

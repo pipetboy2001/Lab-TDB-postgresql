@@ -23,7 +23,7 @@ location.reload()
             <tbody>
                 <tr scope="row" v-for="ranking_voluntarios in pagina" :key="ranking_voluntarios.id">
                     <td>{{ ranking_voluntarios.id }}</td>
-                    <td>{{ ranking_voluntarios.emergencia }}</td>
+                    <td>{{ ranking_voluntarios.id_emergencia}}</td>
                     <td>{{ ranking_voluntarios.tarea }}</td>
                     <td>{{ ranking_voluntarios.cant_vol_req }}</td>
                     <td>{{ ranking_voluntarios.id_vol }}</td>
@@ -43,6 +43,17 @@ export default {
     return {
       listaranking_voluntariados: [],
       pagina: 1
+    }
+  },
+  methods: {
+    editar (id) {
+      this.$router.push('/ranking_voluntariados-edit?id=' +id)
+    },
+    borrar (id) {
+      this.$router.push('/ranking_voluntariados-delete?id=' + id)
+    },
+    crear (){
+      this.$router.push('/ranking_voluntariados-create')
     }
   },
   mounted: function () {
