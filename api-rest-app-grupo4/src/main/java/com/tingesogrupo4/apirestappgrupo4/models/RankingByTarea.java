@@ -4,15 +4,15 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EntityScan
 public class RankingByTarea {
-   public int id;
+   public int emergencia;
    public int id_tarea;
    public String nombre_tarea;
    public int cant_vol_requeridos;
    public int id_voluntario;
    public int puntaje;
 
-    public RankingByTarea(int id, int id_tarea, String nombre_tarea, int cant_vol_requeridos, int id_voluntario, int puntaje) {
-         this.id = id;
+    public RankingByTarea(int emergencia, int id_tarea, String nombre_tarea, int cant_vol_requeridos, int id_voluntario, int puntaje) {
+         this.emergencia = emergencia;
          this.id_tarea = id_tarea;
          this.nombre_tarea = nombre_tarea;
          this.cant_vol_requeridos = cant_vol_requeridos;
@@ -21,7 +21,7 @@ public class RankingByTarea {
     }
 
     public int getId() {
-        return id;
+        return emergencia;
     }
     public int getId_tarea() {
         return id_tarea;

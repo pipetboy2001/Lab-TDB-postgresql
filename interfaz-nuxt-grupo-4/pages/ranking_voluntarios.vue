@@ -12,22 +12,22 @@ location.reload()
             <thead>
                 <tr>
                     <!--[ID-Emergencia - tarea - cant_vol_req - id_vol - puntaje]-->
-                    <th scope="col">ID</th>
                     <th scope="col">EMERGENCIA</th>
+                    <th scope="col">ID TAREA</th>
                     <th scope="col">TAREA</th>
-                    <th scope="col">CANTIDAD VOLUMEN REQUERIDA</th>
-                    <th scope="col">ID VOLUMEN</th>
+                    <th scope="col">CANTIDAD VOLUNTARIO REQUERIDA</th>
+                    <th scope="col">ID VOLUNTARIO</th>
                     <th scope="col">PUNTAJE</th>
                 </tr>
             </thead>
             <tbody>
-                <tr scope="row" v-for="ranking_voluntarios in pagina" :key="ranking_voluntarios.id">
-                    <td>{{ ranking_voluntarios.id }}</td>
-                    <td>{{ ranking_voluntarios.id_emergencia}}</td>
-                    <td>{{ ranking_voluntarios.tarea }}</td>
-                    <td>{{ ranking_voluntarios.cant_vol_req }}</td>
-                    <td>{{ ranking_voluntarios.id_vol }}</td>
-                    <td>{{ ranking_voluntarios.puntaje }}</td>
+                <tr scope="row" v-for="listaRanking in pagina" :key="listaRanking.id">
+                  <td>{{ listaRanking.emergencia}}</td>
+                    <td>{{ listaRanking.id_tarea}}</td>
+                    <td>{{ listaRanking.nombre_tarea }}</td>
+                    <td>{{ listaRanking.cant_vol_requeridos }}</td>
+                    <td>{{ listaRanking.id_voluntario }}</td>
+                    <td>{{ listaRanking.puntaje }}</td>
                 </tr>
             </tbody>
         </table>
@@ -41,23 +41,23 @@ export default {
   name: 'ranking_voluntariadosView',
   data () {
     return {
-      listaranking_voluntariados: [],
+      listaRanking: [],
       pagina: 1
     }
   },
   methods: {
     editar (id) {
-      this.$router.push('/ranking_voluntariados-edit?id=' +id)
+      this.$router.push('/ranking-tareas?id=' +id)
     },
     borrar (id) {
-      this.$router.push('/ranking_voluntariados-delete?id=' + id)
+      this.$router.push('/ranking-tareas?id=' + id)
     },
     crear (){
-      this.$router.push('/ranking_voluntariados-create')
+      this.$router.push('/ranking-tareas')
     }
   },
   mounted: function () {
-    const url = 'http://localhost:3000/ranking_voluntariados' + this.listaranking_voluntariados
+    const url = 'http://localhost:3000/ranking-tareas?id='+id+"/"+ + this.listaRanking
     axios.get(url).then(data => {
       this.pagina = data.data
     })
