@@ -22,6 +22,7 @@ public class RankingVoluntariosService {
 
     @PostMapping("/ranking_voluntariados")
     public RankingVoluntarios createRankingVoluntario(@RequestBody RankingVoluntarios RKV){
+        System.out.println(RKV);
         System.out.println("Intento posting ranking voluntarios...");
         return rankingVoluntariosRepository.createRankingVoluntario(RKV);
     }
