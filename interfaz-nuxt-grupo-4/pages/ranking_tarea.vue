@@ -38,7 +38,7 @@ location.reload()
 <script>
 import axios from 'axios'
 export default {
-  name: 'ranking_voluntariadosView',
+  name: 'ranking_tarea',
   data () {
     return {
       listaRanking: [],
@@ -57,10 +57,19 @@ export default {
     }
   },
   mounted: function () {
-    const url = 'http://localhost:3000/ranking-tareas?id='+id+"/"+ + this.listaRanking
-    axios.get(url).then(data => {
-      this.pagina = data.data
-    })
+    this.institucionId = this.$route.query.id
+    if (this.institucionId){
+      const url = 'http://localhost:3000/ranking-tareas/' + this.institucionId
+      axios.get(url).then(data => {
+        this.pagina = data.data
+      })
+    }else{
+      const url = 'http://localhost:3000/ranking-tareas/'
+      axios.get(url).then(data => {
+        this.pagina = data.data
+      })
+    }
+
   }
 }
 </script>
