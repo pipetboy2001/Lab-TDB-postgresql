@@ -46,7 +46,6 @@ public class RankingByTareaRepositoryImp implements RankingByTareaRepository {
     }
 
 
-
     @Override
     public List<RankingByTarea> getRankingByTarea(){
         final String query = "SELECT tarea.id_emergencia as emergencia, tarea.id as id_tarea,nombre as nombre_tarea, cant_vol_requeridos, id_voluntario, puntaje\n" +
