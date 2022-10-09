@@ -3,7 +3,7 @@ location.reload()
 </script>
 <template>
     <div class="container">
-        <h1>Ranking Para Voluntario</h1>
+        <h1>RANKING DE VOLUNTARIOS PARA TAREA</h1>
         <div>
             ---
         </div>
@@ -43,17 +43,6 @@ export default {
     return {
       listaRanking: [],
       pagina: 1
-    }
-  },
-  methods: {
-    editar (id) {
-      this.$router.push('/ranking-tareas?id=' +id)
-    },
-    borrar (id) {
-      this.$router.push('/ranking-tareas?id=' + id)
-    },
-    crear (){
-      this.$router.push('/ranking-tareas')
     }
   },
   mounted: function () {
