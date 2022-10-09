@@ -93,7 +93,9 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
         final List<Emergencia> emergenciaList;
         Connection conn = sql2o.open();
         try(conn){
-            emergenciaList = conn.createQuery(query).throwOnMappingFailure(false).executeAndFetch(Emergencia.class);
+            emergenciaList = conn.createQuery(query)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Emergencia.class);
             return emergenciaList;
         }
         catch(Exception e){
