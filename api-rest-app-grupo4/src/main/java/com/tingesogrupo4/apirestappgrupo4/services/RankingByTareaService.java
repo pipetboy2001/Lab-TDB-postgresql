@@ -2,10 +2,7 @@ package com.tingesogrupo4.apirestappgrupo4.services;
 
 import com.tingesogrupo4.apirestappgrupo4.models.RankingByTarea;
 import com.tingesogrupo4.apirestappgrupo4.repositories.RankingByTareaRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,10 @@ public class RankingByTareaService {
     public List<RankingByTarea> getRankingByTarea(){
         return rankingByTareaRepository.getRankingByTarea();
 
+    }
+    @GetMapping("/ranking-tareas/{id}")
+    public List<RankingByTarea> getRankingByTareaId(@PathVariable Integer id){
+        return rankingByTareaRepository.getRankingByTareaId(id);
     }
 
 

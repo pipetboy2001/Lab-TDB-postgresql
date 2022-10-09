@@ -1,5 +1,6 @@
 package com.tingesogrupo4.apirestappgrupo4.repositories;
 
+import com.tingesogrupo4.apirestappgrupo4.models.EmeHabilidad;
 import com.tingesogrupo4.apirestappgrupo4.models.Ranking;
 import com.tingesogrupo4.apirestappgrupo4.models.RankingByTarea;
 import com.tingesogrupo4.apirestappgrupo4.models.VolHabilidad;
@@ -18,6 +19,33 @@ import java.util.List;
 public class RankingByTareaRepositoryImp implements RankingByTareaRepository {
     @Autowired
     private Sql2o sql2o;
+    @Override
+    public List<RankingByTarea> getRankingByTareaId(Integer id_tarea) {
+
+        System.out.println("Intento getTarea...");
+        final String query = "SELECT tarea.id as id_tarea,nombre as nombre_tarea, cant_vol_requeridos, id_voluntario, puntaje\n" +
+                "FROM tarea INNER JOIN ranking ON tarea.id = ranking.id_tarea\n" +
+                "where tarea.id = :id_tarea\n"+
+                "order by puntaje desc";
+        final List<RankingByTarea> rankingByTarea;
+        Connection conn = sql2o.open();
+        try(conn){
+            System.out.println(query+"<-Query");
+            rankingByTarea = conn.createQuery(query)
+                    .addParameter("id_tarea", id_tarea)
+                    .executeAndFetch(RankingByTarea.class);
+            return rankingByTarea;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        finally {
+            conn.close();
+        }
+    }
+
+
 
     @Override
     public List<RankingByTarea> getRankingByTarea(){
@@ -39,8 +67,6 @@ public class RankingByTareaRepositoryImp implements RankingByTareaRepository {
             conn.close();
         }
     }
-
-
 
 
 

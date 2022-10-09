@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface RankingByTareaRepository {
     List<RankingByTarea> getRankingByTarea();
+    List<RankingByTarea> getRankingByTareaId(Integer id_tarea);
 }
