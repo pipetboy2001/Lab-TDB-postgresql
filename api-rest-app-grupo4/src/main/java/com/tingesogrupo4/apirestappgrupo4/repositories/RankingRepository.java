@@ -11,7 +11,7 @@ public interface RankingRepository {
 
     Ranking getRankingById(Integer id);
 
-    List<Ranking> getAllRanking();
+    List<Ranking> getAllRankings();
 
     Ranking updateRanking(Ranking ranking);
 

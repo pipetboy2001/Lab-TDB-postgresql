@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 @Configuration
 @Repository
-public class RankingRepositoryImp {
+public class RankingRepositoryImp implements RankingRepository {
     //Implementacion de firmas a traves del uso de sql2o para la conexion con la DB.
     @Autowired
     private Sql2o sql2o;
@@ -93,6 +93,9 @@ public class RankingRepositoryImp {
         }
 
     }
+
+
+
     @Override
     public List<Ranking> getAllRankings() {
 
