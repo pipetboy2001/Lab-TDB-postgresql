@@ -12,21 +12,21 @@ location.reload()
             <thead>
                 <tr>
                     <!--[ID-Emergencia - tarea - cant_vol_req - id_vol - puntaje]-->
-                    <th scope="col">EMERGENCIA</th>
+                  <th scope="col">ID VOLUNTARIO</th>
+                  <th scope="col">EMERGENCIA</th>
                     <th scope="col">ID TAREA</th>
                     <th scope="col">TAREA</th>
                     <th scope="col">CANTIDAD VOLUNTARIO REQUERIDA</th>
-                    <th scope="col">ID VOLUNTARIO</th>
                     <th scope="col">PUNTAJE</th>
                 </tr>
             </thead>
             <tbody>
                 <tr scope="row" v-for="listaRanking in pagina" :key="listaRanking.id">
+                  <td>{{ listaRanking.id_voluntario }}</td>
                   <td>{{ listaRanking.emergencia}}</td>
                     <td>{{ listaRanking.id_tarea}}</td>
                     <td>{{ listaRanking.nombre_tarea }}</td>
                     <td>{{ listaRanking.cant_vol_requeridos }}</td>
-                    <td>{{ listaRanking.id_voluntario }}</td>
                     <td>{{ listaRanking.puntaje }}</td>
                 </tr>
             </tbody>
@@ -41,8 +41,7 @@ export default {
   name: 'ranking_tarea',
   data () {
     return {
-      listaRanking: [],
-      pagina: 1
+      pagina: null
     }
   },
   mounted: function () {

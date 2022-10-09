@@ -45,29 +45,16 @@ export default {
   name: 'emergenciasView',
   data () {
     return {
-      listaInstituciones: [],
-      pagina: 1
+      pagina: null
     }
   },
   methods: {
     rankvoluntarios (id) {
       this.$router.push('/posibles-voluntarios?id=' + id)
     },
-    borrarTodos () {
-      axios.delete('http://localhost:3000/emergencia')
-        .then(datos => {
-          console.log(datos)
-          alert('Instituciones eliminadas con exito')
-          location.reload()
-        }).catch(error => {
-        console.log(error)
-        this.makeToast('Error', 'No se pudo agregar la institucion', 'error')
-      })
-    }
-
   },
   mounted: function () {
-    const url = 'http://localhost:3000/emergencia' + this.listaInstituciones
+    const url = 'http://localhost:3000/emergencia'
     axios.get(url).then(data => {
       this.pagina = data.data
     })

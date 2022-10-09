@@ -43,8 +43,7 @@ export default {
   name: 'institucionesView',
   data () {
     return {
-      listaInstituciones: [],
-      pagina: 1
+      pagina: null
     }
   },
   methods: {
@@ -71,7 +70,7 @@ export default {
 
   },
   mounted: function () {
-    const url = 'http://localhost:3000/instituciones' + this.listaInstituciones
+    const url = 'http://localhost:3000/instituciones'
     axios.get(url).then(data => {
       this.pagina = data.data
     })

@@ -35,7 +35,7 @@ export default {
   name: 'posibles_voluntarios',
   data () {
     return {
-      pagina: 1
+      pagina: null
     }
   },
   mounted: function () {
