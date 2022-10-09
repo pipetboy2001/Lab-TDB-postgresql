@@ -25,7 +25,7 @@ public class TareaService {
         return tareaRepository.createTarea(tarea);
     }
     @GetMapping("/tareas/{id}")
-    public Tarea getInstitucionById(@PathVariable Integer id){
+    public Tarea getTareaById(@PathVariable Integer id){
         return tareaRepository.getTareaById(id);
     }
 
