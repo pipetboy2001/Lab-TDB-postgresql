@@ -4,6 +4,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EntityScan
 public class RankingByTarea {
+    //Se establece el modelo para institucion
+    //Se genera un constructor y sus repectivos selectores.
    public int emergencia;
    public int id_tarea;
    public String nombre_tarea;
@@ -19,13 +21,15 @@ public class RankingByTarea {
          this.id_voluntario = id_voluntario;
          this.puntaje = puntaje;
     }
-
+    //Se obtiene el id de la emergencia
     public int getId() {
         return emergencia;
     }
+    //Se obtiene el id de la tarea
     public int getId_tarea() {
         return id_tarea;
     }
+    //Se obtiene el nombre de la tarea
     public String getNombre_tarea() {
         return nombre_tarea;
     }

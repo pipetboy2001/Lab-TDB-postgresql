@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value ="/")
 public class RankingVoluntariosService {
-
+    //Se hace uso de REST para la implementacion de las direciones para obtener los servicios.
     private final RankingVoluntariosRepository rankingVoluntariosRepository;
 
 

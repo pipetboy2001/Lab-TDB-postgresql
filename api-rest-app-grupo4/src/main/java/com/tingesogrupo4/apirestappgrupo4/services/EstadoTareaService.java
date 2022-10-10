@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/")
 public class EstadoTareaService {
-
+    //Se hace uso de REST para la implementacion de las direciones para obtener los servicios.
     private final EstadoTareaRepository estadoTareaRepository;
     public EstadoTareaService(EstadoTareaRepository estadoTareaRepository) {
         this.estadoTareaRepository = estadoTareaRepository;

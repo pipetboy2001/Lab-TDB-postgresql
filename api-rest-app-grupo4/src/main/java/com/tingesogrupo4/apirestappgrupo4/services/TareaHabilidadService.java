@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/")
 public class TareaHabilidadService {
+    //Se hace uso de REST para la implementacion de las direciones para obtener los servicios.
     private final TareaHabilidadRepository tareaHabilidadRepository;
     public TareaHabilidadService(TareaHabilidadRepository tareaHabilidadRepository) {
         this.tareaHabilidadRepository = tareaHabilidadRepository;

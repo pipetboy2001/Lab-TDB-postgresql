@@ -14,10 +14,11 @@ public class EstadoTarea {
         this.id= id;
         this.descrip = descrip;
     }
-
+    //Se obtiene el id del estado de la tarea
     public Integer getId(){
         return id;
-    }
+    } 
+    //Se obtiene la descripcion del estado de la tarea
     public String getDescription(){
         return descrip;
     }

@@ -18,13 +18,15 @@ public class Institucion {
         this.nombre = nombre;
         this.descrip = descrip;
     }
-
+    //Se obtiene el id de la institucion
     public Integer getId(){
         return id;
     }
+    //Se obtiene el nombre de la institucion
     public String getName(){
         return nombre;
     }
+    //Se obtiene la descripcion de la institucion
     public String getDescription(){
         return descrip;
     }

@@ -23,7 +23,7 @@ public class RankingVoluntarios {
         this.id_vol = id_vol;
         this.puntaje = puntaje;
     }
-
+       
     public int getId() {    return id;  }
 
     public int getId_emergencia() {     return id_emergencia;   }

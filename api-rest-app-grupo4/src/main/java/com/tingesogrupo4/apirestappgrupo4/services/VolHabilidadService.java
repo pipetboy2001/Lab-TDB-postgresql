@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping(value = "/")
 
 public class VolHabilidadService {
-
+    //Se hace uso de REST para la implementacion de las direciones para obtener los servicios.
     private final VolHabilidadRepository volHabilidadRepository;
     public VolHabilidadService(VolHabilidadRepository volHabilidadRepository) {
         this.volHabilidadRepository = volHabilidadRepository;

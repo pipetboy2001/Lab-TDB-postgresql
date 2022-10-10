@@ -43,33 +43,40 @@ public class Tarea {
         this.ffin = addDay(ffin);
         this.id_estado = id_estado;
     }
-
+    //Se obtiene el id de la tarea
     public Integer getId(){
         return id;
     }
+    //Se obtiene el nombre de la tarea
     public String getName(){
         return nombre;
     }
+    //Se obtiene la descripcion de la tarea
     public String getDescription(){
         return descrip;
     }
+    //Se obtiene el id del EstadoTarea  
     public Integer getIdEstadoTarea(){
         return id_estado;
     }
+    //Se obtiene el id de la emergencia
     public Integer getIdEmergencia(){
         return id_emergencia;
     }
+    //Se obtiene la cantidad de voluntarios requeridos
     public Integer getCantidadVolRequeridos(){
         return cant_vol_requeridos;
     }
+    //Se obtiene la cantidad de voluntarios inscritos
     public Integer getCantidadVolInscritos(){
         return cant_vol_inscritos;
     }
-
+    //Se obtiene la fecha de inicio de la tarea
     public Date getFechaInicio()  {
         return finicio;
 
     }
+    //Se obtiene la fecha de fin de la tarea
     public Date getFechaFin(){
             return ffin;
 

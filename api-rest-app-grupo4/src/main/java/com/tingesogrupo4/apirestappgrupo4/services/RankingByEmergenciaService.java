@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/")
 public class RankingByEmergenciaService {
+    //Se hace uso de REST para la implementacion de las direciones para obtener los servicios.
     private final RankingByEmergenciaRepository rankingByEmergenciaRepository;
     RankingByEmergenciaService(RankingByEmergenciaRepository rankingByEmergenciaRepository){
         this.rankingByEmergenciaRepository = rankingByEmergenciaRepository;

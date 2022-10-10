@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/")
 public class HabilidadService {
-
     //Se hace uso de REST para la implementacion de las direciones para obtener los servicios.
     private final HabilidadRepository habilidadRepository;
 
