@@ -9,7 +9,7 @@ import java.util.List;
 public class RankingService {
 
     RankingRepository rankingRepository;
-    @PostMapping("/ranking/create")
+    @PostMapping("/ranking")
     public Ranking createRanking(@RequestBody Ranking ranking){
         System.out.println("Intento posting ranking...");
         return rankingRepository.createRanking(ranking);
