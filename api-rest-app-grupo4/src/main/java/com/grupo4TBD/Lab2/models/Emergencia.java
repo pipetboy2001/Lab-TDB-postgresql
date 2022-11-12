@@ -14,8 +14,8 @@ public class Emergencia {
     public Date finicio;
     public Date ffin;
     public Integer id_institucion;
-    public Integer longitud;
-    public Integer latitud;
+    public float longitud;
+    public float latitud;
     public String geom;
 
     public Emergencia(int id, String nombre, String descrip, Date finicio, Date ffin, Integer id_institucion, Integer longitud, Integer latitud, String geom) {
@@ -86,11 +86,11 @@ public class Emergencia {
         this.geom = geom;
     }
 
-    public Integer getLongitud() {
+    public float getLongitud() {
         return longitud;
     }
 
-    public Integer getLatitud() {
+    public float getLatitud() {
         return latitud;
     }
 

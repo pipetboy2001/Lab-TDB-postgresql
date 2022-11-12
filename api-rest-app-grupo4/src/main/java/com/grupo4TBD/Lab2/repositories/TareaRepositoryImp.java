@@ -50,8 +50,10 @@ public class TareaRepositoryImp implements TareaRepository {
         if(tarea.getName().length()!=0 && tarea.getDescription().length()!=0){
             Integer myId = generateIdTarea()+1;
             System.out.println("myId = "+myId);
-            final String query = "insert into tarea (id,nombre,descrip,cant_vol_requeridos,cant_vol_inscritos,id_emergencia,finicio,ffin,id_estado,longitud,latitud,geom) values (:myId,:nombre,:descrip,:cant_vol_req,:cant_vol_inscritos,:id_emergencia,:finicio,:ffin,:id_estado,:longitud,:latitud,ST_MakePoint(:longitud,:latitud))";
+            final String query = "insert into tarea (id,nombre,descrip,cant_vol_requeridos,cant_vol_inscritos,id_emergencia,finicio,ffin,id_estado,longitud,latitud,geom)" +
+                    " values (:myId,:nombre,:descrip,:cant_vol_req,:cant_vol_inscritos,:id_emergencia,:finicio,:ffin,:id_estado,:longitud,:latitud,ST_MakePoint(:longitud,:latitud))";
             try (Connection conn = sql2o.open()) {
+                System.out.println("Entro dentro de try 2...");
                 conn.createQuery(query)
                         .addParameter("myId", myId)
                         .addParameter("nombre", tarea.getName())
@@ -64,8 +66,9 @@ public class TareaRepositoryImp implements TareaRepository {
                         .addParameter("id_estado", tarea.getIdEstadoTarea())
                         .addParameter("latitud", tarea.getLatitud())
                         .addParameter("longitud", tarea.getLongitud())
-                        .addParameter("geom", tarea.getGeom())
+                        //.addParameter("geom", tarea.getGeom())
                         .executeUpdate();
+                System.out.println("Entro dentro de try 3...");
                 return tarea;
             } catch (Exception e) {
                 System.out.println(e.getMessage());

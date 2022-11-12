@@ -60,7 +60,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
                             .addParameter("id_estado", emergencia.getId_institucion())
                             .addParameter("latitud", emergencia.getLatitud())
                             .addParameter("longitud", emergencia.getLongitud())
-                            .addParameter("geom", emergencia.getGeom())
+                            //.addParameter("geom", emergencia.getGeom())
                             .executeUpdate();
                     return emergencia;
                 }
