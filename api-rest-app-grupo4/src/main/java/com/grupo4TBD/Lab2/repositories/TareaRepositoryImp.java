@@ -49,6 +49,8 @@ public class TareaRepositoryImp implements TareaRepository {
     public Tarea createTarea(Tarea tarea) {
         if(tarea.getName().length()!=0 && tarea.getDescription().length()!=0){
             Integer myId = generateIdTarea()+1;
+            System.out.println("Tarea:"+tarea);
+            System.out.println("Longitud : "+tarea.getLongitud()+" Latitud : "+tarea.getLatitud());
             System.out.println("myId = "+myId);
             final String query = "insert into tarea (id,nombre,descrip,cant_vol_requeridos,cant_vol_inscritos,id_emergencia,finicio,ffin,id_estado,longitud,latitud,geom)" +
                     " values (:myId,:nombre,:descrip,:cant_vol_req,:cant_vol_inscritos,:id_emergencia,:finicio,:ffin,:id_estado,:longitud,:latitud,ST_MakePoint(:longitud,:latitud))";
@@ -200,6 +202,27 @@ public class TareaRepositoryImp implements TareaRepository {
         finally {
             conn.close();
         }
+    }
+
+    @Override
+    public List<Tarea> getTareasByIdRegion(Integer idRegion) {
+        final String query = "SELECT tarea.id, tarea.nombre, tarea.descrip, tarea.cant_vol_requeridos, " +
+                "tarea.cant_vol_inscritos, tarea.id_emergencia, tarea.finicio, tarea.ffin, ST_AsText(tarea.geom) AS geom FROM  " +
+                "tarea JOIN region ON ST_Intersects(region.geom,tarea.geom) WHERE region.gid = :idRegion";
+        try (Connection conn = sql2o.open()) {
+            return conn.createQuery(query)
+                    .addParameter("idRegion", idRegion)
+                    .executeAndFetch(Tarea.class);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+
+
+
+
+
     }
 
 }

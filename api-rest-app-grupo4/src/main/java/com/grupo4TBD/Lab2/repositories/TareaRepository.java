@@ -19,4 +19,5 @@ public interface TareaRepository {
 
     Integer generateIdTarea();
 
+    List<Tarea> getTareasByIdRegion(Integer idRegion);
 }

@@ -18,32 +18,36 @@ public class TareaService {
         this.tareaRepository = tareaRepository;
     }
 
-    @PostMapping("/tareas")
+    @PostMapping("/tarea")
     public Tarea createTarea(@RequestBody Tarea tarea){
         System.out.println("Intento posting tarea...");
         return tareaRepository.createTarea(tarea);
     }
-    @GetMapping("/tareas/{id}")
+    @GetMapping("/tarea/{id}")
     public Tarea getTareaById(@PathVariable Integer id){
         return tareaRepository.getTareaById(id);
     }
 
-    @GetMapping("/tareas")
+    @GetMapping("/tarea")
     public List<Tarea> getAllTareas(){
         return tareaRepository.getAllTareas();
 
     }
-    @PutMapping("/tareas")
+    @GetMapping("/tarea/region/{id}")
+    public List<Tarea> getTareasByIdRegion(@PathVariable Integer id){
+        return tareaRepository.getTareasByIdRegion(id);
+    }
+    @PutMapping("/tarea")
     public Tarea updateTarea(@RequestBody Tarea tarea){
         return tareaRepository.updateTarea(tarea);
     }
 
-    @DeleteMapping("/tareas/{id}")
+    @DeleteMapping("/tarea/{id}")
     public void deleteTareaById(@PathVariable Integer id){
         tareaRepository.deleteTareaById(id);
     }
 
-    @DeleteMapping("/tareas")
+    @DeleteMapping("/tarea")
     public void deleteTareas(){
         tareaRepository.deleteTareas();
     }

@@ -22,8 +22,8 @@ public class Tarea {
     public Date finicio;
     public Date ffin;
     public Integer id_estado;
-    public float longitud;
-    public float latitud;
+    public Double longitud;
+    public Double latitud;
     public String geom;
 
     //Se crea el metodo addDay para agregar un dia a la fecha de inicio y fin, ya que
@@ -35,7 +35,7 @@ public class Tarea {
 
     }
 
-    public Tarea (Integer id, String nombre, String descrip, Integer cantidad_vol_requeridos, Integer cantidad_vol_inscritos, Integer id_emergencia, Date finicio, Date ffin, Integer id_estado, Integer longitud, Integer latitud, String geom){
+    public Tarea (Integer id, String nombre, String descrip, Integer cantidad_vol_requeridos, Integer cantidad_vol_inscritos, Integer id_emergencia, Date finicio, Date ffin, Integer id_estado, Double longitud, Double latitud, String geom){
         this.id= id;
         this.nombre = nombre;
         this.descrip = descrip;
@@ -92,19 +92,19 @@ public class Tarea {
         this.id = id;
     }
 
-    public float getLongitud() {
+    public Double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(Integer longitud) {
+    public void setLongitud(Double longitud) {
         this.longitud = longitud;
     }
 
-    public float getLatitud() {
+    public Double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(Integer latitud) {
+    public void setLatitud(Double latitud) {
         this.latitud = latitud;
     }
 
