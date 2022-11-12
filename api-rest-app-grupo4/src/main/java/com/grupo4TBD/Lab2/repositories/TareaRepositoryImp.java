@@ -50,7 +50,7 @@ public class TareaRepositoryImp implements TareaRepository {
         if(tarea.getName().length()!=0 && tarea.getDescription().length()!=0){
             Integer myId = generateIdTarea()+1;
             System.out.println("myId = "+myId);
-            final String query = "insert into tarea (id,nombre,descrip,cant_vol_requeridos,cant_vol_inscritos,id_emergencia,finicio,ffin,id_estado) values (:myId,:nombre,:descrip,:cant_vol_req,:cant_vol_inscritos,:id_emergencia,:finicio,:ffin,:id_estado)";
+            final String query = "insert into tarea (id,nombre,descrip,cant_vol_requeridos,cant_vol_inscritos,id_emergencia,finicio,ffin,id_estado,longitud,latitud,geom) values (:myId,:nombre,:descrip,:cant_vol_req,:cant_vol_inscritos,:id_emergencia,:finicio,:ffin,:id_estado,:longitud,:latitud,ST_MakePoint(:longitud,:latitud))";
             try (Connection conn = sql2o.open()) {
                 conn.createQuery(query)
                         .addParameter("myId", myId)
@@ -62,6 +62,9 @@ public class TareaRepositoryImp implements TareaRepository {
                         .addParameter("finicio", tarea.getFechaInicio())
                         .addParameter("ffin", tarea.getFechaFin())
                         .addParameter("id_estado", tarea.getIdEstadoTarea())
+                        .addParameter("latitud", tarea.getLatitud())
+                        .addParameter("longitud", tarea.getLongitud())
+                        .addParameter("geom", tarea.getGeom())
                         .executeUpdate();
                 return tarea;
             } catch (Exception e) {
@@ -122,7 +125,7 @@ public class TareaRepositoryImp implements TareaRepository {
     public Tarea updateTarea(Tarea tarea) {
 
         if(tarea.getName().length()!=0 && tarea.getDescription().length()!=0){
-            final String query = "update tarea set nombre = :nombre, descrip = :descrip, cant_vol_requeridos = :cant_vol_req, cant_vol_inscritos = :cant_vol_inscritos, id_emergencia = :id_emergencia, finicio = :finicio, ffin = :ffin, id_estado = :id_estado where id = :id";
+            final String query = "update tarea set nombre = :nombre, descrip = :descrip, cant_vol_requeridos = :cant_vol_req, cant_vol_inscritos = :cant_vol_inscritos, id_emergencia = :id_emergencia, finicio = :finicio, ffin = :ffin, id_estado = :id_estado , longitud = :longitud, latitud = :latitud, geom := ST_MakePoint(:longitud,:latitud)  where id = :id";
             Connection conn = sql2o.open();
             try(conn){
                 conn.createQuery(query)
@@ -135,6 +138,9 @@ public class TareaRepositoryImp implements TareaRepository {
                         .addParameter("finicio", tarea.getFechaInicio())
                         .addParameter("ffin", tarea.getFechaFin())
                         .addParameter("id_estado", tarea.getIdEstadoTarea())
+                        .addParameter("latitud", tarea.getLatitud())
+                        .addParameter("longitud", tarea.getLongitud())
+                        .addParameter("geom", tarea.getGeom())
                         .executeUpdate();
                 return tarea;
             }

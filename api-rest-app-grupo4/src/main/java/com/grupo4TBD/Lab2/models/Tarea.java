@@ -22,6 +22,9 @@ public class Tarea {
     public Date finicio;
     public Date ffin;
     public Integer id_estado;
+    public Integer longitud;
+    public Integer latitud;
+    public String geom;
 
     //Se crea el metodo addDay para agregar un dia a la fecha de inicio y fin, ya que
     //postgres tiene otro timezone y las fechas se agregan incorrectamente.
@@ -32,7 +35,7 @@ public class Tarea {
 
     }
 
-    public Tarea (Integer id, String nombre, String descrip, Integer cantidad_vol_requeridos, Integer cantidad_vol_inscritos, Integer id_emergencia, Date finicio, Date ffin, Integer id_estado){
+    public Tarea (Integer id, String nombre, String descrip, Integer cantidad_vol_requeridos, Integer cantidad_vol_inscritos, Integer id_emergencia, Date finicio, Date ffin, Integer id_estado, Integer longitud, Integer latitud, String geom){
         this.id= id;
         this.nombre = nombre;
         this.descrip = descrip;
@@ -42,6 +45,9 @@ public class Tarea {
         this.finicio = addDay(finicio);
         this.ffin = addDay(ffin);
         this.id_estado = id_estado;
+        this.longitud = longitud;
+        this.latitud = latitud;
+        this.geom = geom;
     }
     //Se obtiene el id de la tarea
     public Integer getId(){
@@ -55,7 +61,7 @@ public class Tarea {
     public String getDescription(){
         return descrip;
     }
-    //Se obtiene el id del EstadoTarea  
+    //Se obtiene el id del EstadoTarea
     public Integer getIdEstadoTarea(){
         return id_estado;
     }
@@ -82,4 +88,31 @@ public class Tarea {
 
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Integer longitud) {
+        this.longitud = longitud;
+    }
+
+    public Integer getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(Integer latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getGeom() {
+        return geom;
+    }
+
+    public void setGeom(String geom) {
+        this.geom = geom;
+    }
 }
