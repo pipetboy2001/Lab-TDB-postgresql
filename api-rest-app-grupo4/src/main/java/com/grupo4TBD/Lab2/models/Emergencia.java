@@ -14,14 +14,20 @@ public class Emergencia {
     public Date finicio;
     public Date ffin;
     public Integer id_institucion;
+    public Integer longitud;
+    public Integer latitud;
+    public String geom;
 
-    public Emergencia(int id, String nombre, String descrip, Date finicio, Date ffin, Integer id_institucion) {
+    public Emergencia(int id, String nombre, String descrip, Date finicio, Date ffin, Integer id_institucion, Integer longitud, Integer latitud, String geom) {
         this.id = id;
         this.nombre = nombre;
         this.descrip = descrip;
         this.finicio = finicio;
         this.ffin = ffin;
         this.id_institucion = id_institucion;
+        this.longitud = longitud;
+        this.latitud = latitud;
+        this.geom = geom;
     }
     //Se obtiene el id de la emergencia
     public int getId() {
@@ -43,6 +49,55 @@ public class Emergencia {
     public Date getFfin() {
         return ffin;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDescrip(String descrip) {
+        this.descrip = descrip;
+    }
+
+    public void setFinicio(Date finicio) {
+        this.finicio = finicio;
+    }
+
+    public void setFfin(Date ffin) {
+        this.ffin = ffin;
+    }
+
+    public void setId_institucion(Integer id_institucion) {
+        this.id_institucion = id_institucion;
+    }
+
+    public void setLongitud(Integer longitud) {
+        this.longitud = longitud;
+    }
+
+    public void setLatitud(Integer latitud) {
+        this.latitud = latitud;
+    }
+
+    public void setGeom(String geom) {
+        this.geom = geom;
+    }
+
+    public Integer getLongitud() {
+        return longitud;
+    }
+
+    public Integer getLatitud() {
+        return latitud;
+    }
+
+    public String getGeom() {
+        return geom;
+    }
+
     //Se obtiene el id de la institucion
     public Integer getId_institucion() {
         return id_institucion;

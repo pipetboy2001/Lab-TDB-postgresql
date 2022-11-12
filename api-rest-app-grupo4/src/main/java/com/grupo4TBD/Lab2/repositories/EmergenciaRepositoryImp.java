@@ -42,12 +42,14 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
             conn.close();
         }
     }
+
+
     @Override
         public Emergencia createEmergencia(Emergencia emergencia) {
             if(emergencia.getNombre().length()!=0 && emergencia.getDescrip().length()!=0){
                 Integer myId = generateIdEmergencia()+1;
                 System.out.println("myId = "+myId);
-                final String query = "insert into emergencia (id,nombre,descrip,finicio,ffin,id_estado) values (:myId,:nombre,:descrip,:finicio,:ffin,:id_estado)";
+                final String query = "insert into emergencia (id,nombre,descrip,finicio,ffin,id_estado,longitud,latitud,geom) values (:myId,:nombre,:descrip,:finicio,:ffin,:id_estado,:longitud,:latitud,ST_MakePoint(:longitud,:latitud))";
                 try (Connection conn = sql2o.open()) {
                     conn.createQuery(query)
                             .addParameter("myId", myId)
@@ -56,6 +58,9 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
                             .addParameter("finicio", emergencia.getFinicio())
                             .addParameter("ffin", emergencia.getFfin())
                             .addParameter("id_estado", emergencia.getId_institucion())
+                            .addParameter("latitud", emergencia.getLatitud())
+                            .addParameter("longitud", emergencia.getLongitud())
+                            .addParameter("geom", emergencia.getGeom())
                             .executeUpdate();
                     return emergencia;
                 }
@@ -111,7 +116,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     public Emergencia updateEmergencia(Emergencia emergencia) {
 
         if(emergencia.getNombre().length()!=0 && emergencia.getDescrip().length()!=0){
-            final String query = "update emergencia set nombre = :nombre, descrip = :descrip, finicio = :finicio, ffin = :ffin, id_estado = :id_estado where id = :id";
+            final String query = "update emergencia set nombre = :nombre, descrip = :descrip, finicio = :finicio, ffin = :ffin, id_estado = :id_estado, longitud = :longitud, latitud = :latitud, geom := ST_MakePoint(:longitud,:latitud)  where id = :id";
             Connection conn = sql2o.open();
             try(conn){
                 conn.createQuery(query)
@@ -121,6 +126,9 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
                         .addParameter("finicio", emergencia.getFinicio())
                         .addParameter("ffin", emergencia.getFfin())
                         .addParameter("id_estado", emergencia.getId_institucion())
+                        .addParameter("latitud", emergencia.getLatitud())
+                        .addParameter("longitud", emergencia.getLongitud())
+                        .addParameter("geom", emergencia.getGeom())
                         .executeUpdate();
                 return emergencia;
             }
