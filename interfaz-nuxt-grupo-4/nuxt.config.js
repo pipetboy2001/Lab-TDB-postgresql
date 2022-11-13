@@ -3,6 +3,7 @@ export default {
     port: 8080, // default: 3000
     host: '0.0.0.0' // default: localhost
   },
+  ssr: false,
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -19,7 +20,8 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {rel: 'stylesheet', href: 'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css'}
     ]
   },
 
@@ -41,7 +43,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/bootstrap
-    'bootstrap-vue/nuxt',
+    'bootstrap-vue/nuxt'
   ],
   bootstrapCSS: false,
   bootstrapVueCSS: false,

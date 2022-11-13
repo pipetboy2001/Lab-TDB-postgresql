@@ -50,7 +50,7 @@ export default {
     },
   },
   mounted: function () {
-    const url = 'http://localhost:3000/tareas'
+    const url = 'http://localhost:3000/tarea'
     axios.get(url).then(data => {
       this.pagina = data.data
     })

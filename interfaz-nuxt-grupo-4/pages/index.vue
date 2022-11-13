@@ -12,6 +12,7 @@ location.reload()
     <button v-on:click="voluntarios()" type="button " class="btn btn-warning ">VOLUNTARIOS</button>
     <button v-on:click="emergencias()" type="button " class="btn btn-warning ">EMERGENCIAS</button>
     <button v-on:click="tareas()" type="button " class="btn btn-warning ">TAREAS</button>
+    <button v-on:click="tareasRegion()" type="button " class="btn btn-warning ">TAREAS POR REGION</button>
 
     <div></div>
 
@@ -35,6 +36,9 @@ export default {
     },
     voluntarios () {
       this.$router.push('/voluntarios')
+    },
+    tareasRegion () {
+      this.$router.push('/tareas_region')
     },
   },
 
