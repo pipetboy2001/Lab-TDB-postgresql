@@ -19,7 +19,7 @@ public class RankingByTareaRepositoryImp implements RankingByTareaRepository {
     @Override
     public List<RankingByTarea> getRankingByTareaId(Integer id_tarea) {
 
-        System.out.println("Intento getTarea...");
+
         final String query = "SELECT tarea.id_emergencia as emergencia, tarea.id as id_tarea,nombre as nombre_tarea, cant_vol_requeridos, id_voluntario, puntaje\n" +
                 "FROM tarea INNER JOIN ranking ON tarea.id = ranking.id_tarea\n" +
                 "where tarea.id = :id_tarea\n"+

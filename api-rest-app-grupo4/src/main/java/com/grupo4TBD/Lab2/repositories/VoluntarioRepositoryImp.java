@@ -187,4 +187,27 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
             conn.close();
         }
     }
+
+
+
+
+    @Override
+    public void generateViewByIdEmergencia(String inputId) {
+        final String query = "create or replace view tareas_emergencia as select tarea.id_emergencia,tarea.nombre,tarea.id " +
+                "as id_tarea from tarea, emergencia where tarea.id_emergencia ="+inputId+" and tarea.id_emergencia = emergencia.id";
+        Connection conn = sql2o.open();
+
+        try(conn){
+            System.out.println("Intenta conexion dentro de try...");
+            conn.createQuery(query).executeUpdate();
+             System.out.println("Exito con exito...");
+        }
+        catch(Exception e){
+            System.out.println("query fallida con exito!");
+            System.out.println(e.getMessage());
+        }
+        finally {
+            conn.close();
+        }
+    }
 }

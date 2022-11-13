@@ -58,7 +58,6 @@ import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 import axios from "axios";
 
 
-
 var latitud= -33.456;
 var longitude= -70.648;
 export default {

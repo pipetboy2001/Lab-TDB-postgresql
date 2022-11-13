@@ -14,6 +14,8 @@ location.reload()
     <button v-on:click="tareas()" type="button " class="btn btn-warning ">TAREAS</button>
     <button v-on:click="tareasRegion()" type="button " class="btn btn-warning ">TAREAS POR REGION</button>
 
+    <button v-on:click="ranking()" type="button " class="btn btn-warning ">RANKING POR TAREAS EN EMERGENCIAS</button>
+
     <div></div>
 
   </div>
@@ -39,6 +41,9 @@ export default {
     },
     tareasRegion () {
       this.$router.push('/tareas_region')
+    },
+    ranking () {
+      this.$router.push('/ranking_tarea_emergencia')
     },
   },
 

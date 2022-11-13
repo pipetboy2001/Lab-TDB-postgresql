@@ -17,4 +17,7 @@ public interface VoluntarioRepository {
     void deleteVoluntarios();
 
     Integer generateId();
+
+
+    void generateViewByIdEmergencia(String inputId);
 }

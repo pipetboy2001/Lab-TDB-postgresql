@@ -46,4 +46,12 @@ public class VoluntarioService {
     public void deleteVoluntarioes(){
         VoluntarioRepository.deleteVoluntarios();
     }
+
+
+    @PostMapping("/create/view/{id}")
+    public void generateViewByIdEmergencia(@PathVariable String id){
+        System.out.println("Id de emergencia: "+id);
+        System.out.println("Intento posting generate view...");
+        VoluntarioRepository.generateViewByIdEmergencia(id);
+    }
 }

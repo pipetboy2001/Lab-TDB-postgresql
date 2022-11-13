@@ -14,11 +14,11 @@ public class Emergencia {
     public Date finicio;
     public Date ffin;
     public Integer id_institucion;
-    public float longitud;
-    public float latitud;
+    public Double longitud;
+    public Double latitud;
     public String geom;
 
-    public Emergencia(int id, String nombre, String descrip, Date finicio, Date ffin, Integer id_institucion, Integer longitud, Integer latitud, String geom) {
+    public Emergencia(int id, String nombre, String descrip, Date finicio, Date ffin, Integer id_institucion, Double longitud, Double latitud, String geom) {
         this.id = id;
         this.nombre = nombre;
         this.descrip = descrip;
@@ -74,11 +74,11 @@ public class Emergencia {
         this.id_institucion = id_institucion;
     }
 
-    public void setLongitud(Integer longitud) {
+    public void setLongitud(Double longitud) {
         this.longitud = longitud;
     }
 
-    public void setLatitud(Integer latitud) {
+    public void setLatitud(Double latitud) {
         this.latitud = latitud;
     }
 
@@ -86,11 +86,11 @@ public class Emergencia {
         this.geom = geom;
     }
 
-    public float getLongitud() {
+    public Double getLongitud() {
         return longitud;
     }
 
-    public float getLatitud() {
+    public Double getLatitud() {
         return latitud;
     }
 
