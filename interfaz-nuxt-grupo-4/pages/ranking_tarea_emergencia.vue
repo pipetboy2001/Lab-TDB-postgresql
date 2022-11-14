@@ -72,7 +72,7 @@ export default {
     },
 
     async verRanking(id) {
-      try{axios.post("http://localhost:3000/create/view/" + id).then(
+      try{axios.post("http://localhost:3000/voluntarios/view/" + id).then(
         this.getVoluntarios()
       )
       }catch (e) {

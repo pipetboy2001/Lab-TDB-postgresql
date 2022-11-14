@@ -48,7 +48,7 @@ public class VoluntarioService {
     }
 
 
-    @PostMapping("/create/view/{id}")
+    @PostMapping("/voluntarios/view/{id}")
     public void generateViewByIdEmergencia(@PathVariable String id){
         System.out.println("Id de emergencia: "+id);
         System.out.println("Intento posting generate view...");
