@@ -9,7 +9,8 @@
 -   **Vicente Vargas**
 -   **Felipe Fernandez**
 -   **Ignacio Villarroel**
--   **Diego Riquelme**     
+-   **Diego Riquelme**  
+-   **Gonzalo Ordenes**  
 # Descripción
 En nuestro país, con la ocurrencia de desastres naturales, se da con frecuencia que voluntarios
 concurren espontáneamente al sitio del suceso. Si bien su presencia es de gran ayuda, puede
@@ -21,8 +22,7 @@ Para este fin, se propone crear un sistema para la gestión del voluntariado esp
 **Módulo de coordinación**
 
 Se construirá un módulo consistente en una aplicación web para gestión de coordinadores,
-con las capacidades de crear emergencias, definir requerimientos para cada emergencia y
-tareas.
+con las capacidades de crear emergencias, definir requerimientos para cada emergencia y tareas.
 **Módulo de voluntariado**
 Por otro lado, se construirá un segundo módulo web para voluntarios que permita
 registrarse en el sistema, crear y editar su perfil, ver emergencias activas y registrarse en
@@ -40,10 +40,13 @@ actualizar el estado de las tareas.
       a) PgAdmin4
       b) IDE Intellij.
       c) JDK versión 17.
+      d) PostGis
 
 - Clonar el repositorio del proyecto, a continuación se dispone su URL
             https://github.com/pipetboy2001/Lab-1-TDB
 
+- Base de datos:
+	Se debe crear una base de datos llamada "voluntariado", la cual será poblada con el archivo [Backup](https://github.com/pipetboy2001/Lab-TDB/blob/main/backup_actualizado.sql) ,el cual cuenta con un script de creación de la base de datos y datos para la utilización del programa
 - Backend:
       Se debe colocar la contraseña en la sección la carpeta de api-rest-app-grupo4 -> src -> main -> resource -> application.properties y serciorarse de estar en el puerto 
       5432 con la database llamada 'voluntariado'.
